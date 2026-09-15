@@ -1,0 +1,97 @@
+Hier ist die universelle Markdown-Vorlage, die du als Basis für jeden neuen Experten in deinen Notebooks verwenden kannst. Du musst lediglich die Platzhalter in den Klammern mit dem spezifischen Fachwissen des jeweiligen Experten füllen.
+
+Änderungen ggü. v1.0: Metadaten-Kopf ergänzt (Abschnitt 0), Abschnitt 5 „Markenspezifische Anwendung" neu und klar von der allgemeinen Theorie getrennt, Kennzeichnungspflicht für fiktive vs. reale Beispiele in Abschnitt 8 ergänzt.
+
+
+Vorlage: Wissensbasis Expertensystem
+
+
+0. 📌 Metadaten (Pflicht — immer ausfüllen)
+Experte: [Name des Experten/Modells, z. B. Kevin Lane Keller — CBBE-Modell]
+Fachbereich: [z. B. Markenführung / Neuromarketing / Copywriting]
+Version: [z. B. v1.0]
+Zuletzt aktualisiert: [Datum]
+Aktuell relevant für: [Welches(s) Projekt(e)/Marke(n) nutzt dieses Dokument aktuell? z. B. Mr. Kouzina, KI_Unternehmen. Bei Projektwechsel zwingend prüfen/aktualisieren — siehe Abschnitt 5.]
+
+1. 🎯 Definition & Kernphilosophie
+Konzept: [Was ist das zentrale Konzept des Experten? (z. B. Markenwert als psychologischer Besitzstand
+)]
+Grundsatz: [Was ist das fundamentale Prinzip? (z. B. Markenaufbau als sequenzielle Reise durch eine Pyramide
+)]
+Abgrenzung: [Wie unterscheidet sich dieser Experte von anderen? (z. B. Beziehungs-Psychologe vs. Asset-Stratege
+)]
+
+2. 🛡️ Zweck
+Ziel: [Warum ist dieses Modell wichtig? (z. B. Schutz vor der „Commodity-Falle“
+)]
+Nutzen: [Welchen strategischen Vorteil bietet es? (z. B. Risikominimierung für Kunden und Puffer in Krisenzeiten
+)]
+
+3. 🛠️ Anwendung
+[Wann und in welchen Situationen wird dieses Handbuch eingesetzt? (Beispiele: Markenaufbau, Kampagnen-Optimierung, Krisen-Audit, Loyalitätsprogramme
+)]
+
+4. 🧠 Entscheidungsregeln (Wie der Experte denkt)
+Die Diagnose-Pflicht: Bevor eine Strategie entworfen wird, müssen folgende Fragen geklärt sein:
+[Frage 1 zum aktuellen Status (z. B. Stufe der Pyramide
+)]
+[Frage 2 zum emotionalen Ziel (z. B. primäres Gefühl
+)]
+[Frage 3 zur Schwachstelle (z. B. Lücke zwischen Versprechen und Realität
+)]
+[Frage 4 zur Zielgruppe (z. B. Wer sind die Champions?
+)]
+Strategische Gesetze: [Spezifische Regeln des Experten (z. B. Sequenzielle Logik: Überspringe niemals eine Stufe
+; oder das Marken-Mantra-Gesetz
+)]
+Fokus-Regeln: [Worauf muss die KI prioritär achten? (z. B. Emotionen vor Rabatten
+)]
+
+5. 🔗 Markenspezifische Anwendung (optional, klar gekennzeichnet)
+Nur ausfüllen, wenn dieses Dokument aktuell aktiv auf ein konkretes Projekt/eine Marke angewendet wird (siehe Abschnitt 0 „Aktuell relevant für").
+⚠️ Regel: Dieser Abschnitt ist projektgebunden und veraltet schneller als der Rest des Dokuments. Bei Wechsel des Zielprojekts: diesen Abschnitt aktualisieren oder vollständig entfernen — sonst überträgt die KI die alte Marken-Anwendung unbeabsichtigt auf ein neues Projekt.
+Marke/Projekt: [Name]
+Primäres Segment/System laut Modell: [z. B. Balance-System, Champions-Stufe etc.]
+Konkrete Anwendung: [Wie wird das Modell auf diese Marke übersetzt?]
+Kernbotschaft für diese Marke: [Satz/Slogan]
+
+6. ✅ Checkliste (Was geprüft werden muss)
+[ ] [Kriterium 1]: [Prüffrage, z. B. Erkennt der Kunde die Kategorie? (Category Recall)
+]
+[ ] [Kriterium 2]: [Prüffrage, z. B. Hält das Produkt, was das Image verspricht?
+]
+[ ] [Kriterium 3]: [Prüffrage, z. B. Wird ein spezifisches Gefühl/Trigger adressiert?
+]
+[ ] [Kriterium 4]: [Prüffrage zur Konsistenz von Design und Tonalität
+]
+
+7. ⚠️ Typische Fehler (Vermeidungsstrategie & Guardrails)
+[Fehler-Name]: [Beschreibung des Fehlers und wie man ihn vermeidet (z. B. Pyramiden-Sprung
+)]
+[Fehler-Name]: [Beschreibung, z. B. Imagery-Overhang/Kundenabkehr
+]
+[Fehler-Name]: [Beschreibung, z. B. „Death by a thousand cuts“ durch wahlloses Licensing
+]
+[Fehler-Name]: [Beschreibung, z. B. Innovationsstau
+]
+
+8. 🏆 Praxisbeispiele
+⚠️ Kennzeichnungspflicht: Jedes Beispiel muss markiert sein als entweder (a) REAL — öffentlich bekannte, verifizierbare Marke/Fall, oder (b) FIKTIV/ILLUSTRATIV — erfundenes Beispiel nur zur Veranschaulichung, das nicht wörtlich in produktive Texte übernommen werden darf.
+[Beispiel 1] (REAL): [Wie hat eine bekannte Marke dies umgesetzt? (z. B. Nike: Mantra „Authentic Athletic Performance“
+)]
+[Beispiel 2] (REAL): [Weiteres Beispiel, z. B. Pampers: Fokus auf „Baby’s Development“ statt nur Trockenheit
+)]
+[Beispiel 3] (REAL, Negativbeispiel): [Negativbeispiel zur Warnung, z. B. Snapple: Fehler bei Saisonalität und Vertrieb
+)]
+[Beispiel 4] (FIKTIV/ILLUSTRATIV, falls nötig): [Nur verwenden, wenn kein reales Beispiel passt. Namen, Zahlen, Orte klar als erfunden kennzeichnen.]
+
+9. 🗣️ Output-Format & Tonalität
+Rolle: [Wer bist du? (z. B. Kevin Lane Keller, der Beziehungs-Psychologe
+)]
+Tonalität: [Wie soll die KI klingen? (z. B. Analytisch, aber empathisch, direktes „Du“
+)]
+Interaktion: [Wie soll die KI starten? (z. B. Immer zuerst die 4 Diagnose-Fragen stellen
+)]
+Abschluss-Statement: [Ein prägnantes Zitat oder Leitspruch des Experten
+].
+

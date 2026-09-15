@@ -1,0 +1,194 @@
+# P_021_A02_Facebook-Audit_v2.0.md
+
+**Prozess-ID:** P_021 | **Version:** v2.0 | **Erstellt:** 21.06.2026 | **Aktualisiert:** 28.06.2026
+**Verantwortung:** A02a (Marketing-Leiter)
+**Uebergeordneter Prozess:** P_016.3 Digital Audit
+**DNA-Zuordnung:** Strang 2 — Digital Audit / 2.3 Social Media
+**Trigger:** Digital Audit gestartet & Facebook-Kanal vorhanden
+
+---
+
+## ZIEL
+
+Vollstaendige Analyse der Facebook-Praesenz des Kunden UND des Hauptwettbewerbers. Jeden Pruefpunkt mit Screenshot belegen. Befunde fliessen als Input in DNA Strang 2 ein. Scoring erfolgt ausschliesslich in `dna-analyse_VORLAGE_v5.0.md`.
+
+---
+
+## ABLAUF
+
+```
+Digital Audit gestartet
+  → A02a (Marketing-Leiter) oeffnet Facebook-Kanal Kunde
+  → Checkliste Punkt fuer Punkt abarbeiten
+  → Screenshots je Punkt (Beweis)
+  → Befund & Ursache dokumentieren
+  → Gleiche Analyse fuer Hauptwettbewerber
+  → Direktvergleich erstellen
+  → Ergebnis an A01a (Hermes) → DNA Strang 2 befuellen
+```
+
+---
+
+## CHECKLISTE — KUNDE & WETTBEWERBER
+
+**Dateiname:** `FB_AUDIT_[Datum]_[Kundenname].md`
+
+---
+
+### A — PROFIL-VOLLSTAENDIGKEIT
+
+| Nr. | Pruefpunkt | Beweise | Befund Kunde | Befund Wettbewerb | Ursache |
+|:---:|-----------|:-------:|-------------|-------------------|:-------:|
+| A.1 | Seite vorhanden | 📸 Screenshot | | | |
+| A.2 | Profilbild vorhanden & aktuell | 📸 Screenshot | | | |
+| A.3 | Titelbild vorhanden & professionell | 📸 Screenshot | | | |
+| A.4 | Seitenname korrekt & konsistent | 📸 Screenshot | | | |
+| A.5 | Kategorie korrekt gewaehlt | 📸 Screenshot | | | |
+| A.6 | Bio / Kurzbeschreibung vorhanden | 📸 Screenshot | | | |
+| A.7 | Telefonnummer eingetragen | 📸 Screenshot | | | |
+| A.8 | Adresse / Standort eingetragen | 📸 Screenshot | | | |
+| A.9 | Website-Link eingetragen | 📸 Screenshot | | | |
+| A.10 | Oeffnungszeiten eingetragen | 📸 Screenshot | | | |
+| A.11 | E-Mail-Adresse eingetragen | 📸 Screenshot | | | |
+| A.12 | CTA-Button vorhanden (Anrufen, Nachricht, etc.) | 📸 Screenshot | | | |
+| A.13 | WhatsApp-Verknuepfung vorhanden | 📸 Screenshot | | | |
+
+---
+
+### B — CONTENT & AKTIVITAET
+
+| Nr. | Pruefpunkt | Beweise | Befund Kunde | Befund Wettbewerb | Ursache |
+|:---:|-----------|:-------:|-------------|-------------------|:-------:|
+| B.1 | Anzahl Follower / Likes | 📸 Screenshot | | | |
+| B.2 | Posting-Haeufigkeit (Posts pro Woche) | 📸 Screenshot | | | |
+| B.3 | Letzter Post (Datum) | 📸 Screenshot | | | |
+| B.4 | Content-Qualitaet Bilder (scharf, professionell) | 📸 Screenshot | | | |
+| B.5 | Content-Qualitaet Texte (klar, ansprechend) | 📸 Screenshot | | | |
+| B.6 | Videos / Reels vorhanden | 📸 Screenshot | | | |
+| B.7 | Stories aktiv genutzt | 📸 Screenshot | | | |
+| B.8 | Hashtag-Nutzung (vorhanden / sinnvoll) | 📸 Screenshot | | | |
+| B.9 | Engagement-Rate (Likes, Kommentare, Shares) | 📸 Screenshot | | | |
+| B.10 | Reaktion auf Kommentare (Antworten vorhanden) | 📸 Screenshot | | | |
+
+---
+
+### C — MARKENIDENTITAET & KONSISTENZ
+
+| Nr. | Pruefpunkt | Beweise | Befund Kunde | Befund Wettbewerb | Ursache |
+|:---:|-----------|:-------:|-------------|-------------------|:-------:|
+| C.1 | Logo konsistent mit anderen Kanaelen | 📸 Screenshot | | | |
+| C.2 | Farbwelt konsistent mit anderen Kanaelen | 📸 Screenshot | | | |
+| C.3 | Tonalitaet konsistent (professionell / locker) | — | | | |
+| C.4 | Sprache konsistent (eine Sprache / mehrsprachig) | 📸 Screenshot | | | |
+| C.5 | Wasserzeichen / Branding auf Fotos | 📸 Screenshot | | | |
+
+---
+
+### D — BEWERTUNGEN & REPUTATION
+
+| Nr. | Pruefpunkt | Beweise | Befund Kunde | Befund Wettbewerb | Ursache |
+|:---:|-----------|:-------:|-------------|-------------------|:-------:|
+| D.1 | Bewertungsfunktion aktiviert | 📸 Screenshot | | | |
+| D.2 | Anzahl Bewertungen | 📸 Screenshot | | | |
+| D.3 | Durchschnittliche Bewertung | 📸 Screenshot | | | |
+| D.4 | Reaktion auf Bewertungen | 📸 Screenshot | | | |
+| D.5 | Negative Bewertungen vorhanden & beantwortet | 📸 Screenshot | | | |
+
+---
+
+## DIREKTVERGLEICH KUNDE vs. WETTBEWERB
+
+| Bereich | Befund Kunde | Befund Wettbewerb | Gap-Einschaetzung | Prioritaet |
+|---------|-------------|-------------------|-----------------|:---------:|
+| A — Profil-Vollstaendigkeit | | | | |
+| B — Content & Aktivitaet | | | | |
+| C — Markenidentitaet | | | | |
+| D — Bewertungen | | | | |
+| **GESAMT** | | | | |
+
+---
+
+## URSACHEN-ANALYSE
+
+| Ursache | Nennungen Kunde | Hauptbetroffene Punkte |
+|---------|:--------------:|------------------------|
+| K1 — Fehlende Markenidentitaet | | |
+| K2 — Keine digitale Praesenz | | |
+| K3 — Inkonsistente Kommunikation | | |
+| K4 — Fehlende Prozesse / Standards | | |
+| K5 — Ressourcen / Budget | | |
+| K6 — Bewusstsein / Wissen fehlt | | |
+
+**Hauptursache:** _______________________
+
+---
+
+## TOP 3 SOFORT-MASSNAHMEN FACEBOOK
+
+| Prioritaet | Massnahme | Aufwand | Wirkung |
+|:---------:|----------|:-------:|:-------:|
+| 1 | | | |
+| 2 | | | |
+| 3 | | | |
+
+---
+
+## OUTPUT → DNA STRANG 2
+
+```
+Befunde fliessen ein in:
+→ DNA Strang 2 / Bereich 2.3 Social Media
+→ DNA Strang 2 / Bereich 2.4 Markenidentitaet Digital
+
+→ Kein eigener Score — Bewertung ausschliesslich in dna-analyse_VORLAGE_v5.0.md
+→ Befunde an A01a (Hermes) uebergeben
+```
+
+---
+
+## ABLAGESTRUKTUR
+
+```
+05_UNTERNEHMEN/09_Kunden/KD_[Nr]_[Name]/
+└── FB_AUDIT_[Datum]_[Kundenname].md
+```
+
+> Flache Struktur gemaess Teil C — keine Unterordner in KD_[Nr]_[Name]/
+
+---
+
+## BETEILIGTE
+
+| Aufgabe | Verantwortung |
+|---------|--------------|
+| Facebook Audit durchfuehren | A02a (Marketing-Leiter) |
+| Screenshots sammeln | A02a |
+| Wettbewerb-Analyse | A02a |
+| Direktvergleich | A02a |
+| DNA Strang 2 befuellen | A01a (Hermes) |
+| Freigabe | GF |
+
+---
+
+## QUALITAETS-REGELN
+
+```
+⚠️  Jeder Befund mit Screenshot belegt
+⚠️  Wettbewerber immer parallel analysieren
+⚠️  Keine Meinungen — nur belegbare Fakten
+⚠️  Ursache je Punkt zuordnen (K1–K6)
+⚠️  Kein Scoring in dieser Datei — ausschliesslich Befunde erfassen
+```
+
+---
+
+## AENDERUNGSHISTORIE
+
+| Version | Datum | Aenderung | Verantwortlich |
+|---------|-------|-----------|----------------|
+| v1.0 | 21.06.2026 | Erstellung | A02a (Marketing-Leiter) |
+| v2.0 | 28.06.2026 | Dateiname konformiert (P_021_A02), Ablagestruktur flach, Versions-Inkonsistenz behoben | A09a (Doku-Leiter) |
+
+---
+
+*P_021_A02_Facebook-Audit_v2.0.md | Q7-System v23.5 | 28.06.2026*
