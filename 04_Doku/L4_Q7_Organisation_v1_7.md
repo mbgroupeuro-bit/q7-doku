@@ -1,4 +1,4 @@
-# Q7 – Organisationsmodell
+﻿# Q7 – Organisationsmodell
 
 **Version:** 1.8
 **Status:** Verbindlich
@@ -106,7 +106,7 @@ Geschäftsführung (00_Admin)
 └── A00 – Stab (direkte Admin-Unterstützung, außerhalb der A01-Koordination; zusätzlich systemweite Überwachungsfunktion, siehe L6 „Systemweite Überwachungsfunktion (A00)")
 ```
 
-A14 (Sicherheit) steht als cross-funktionale Durchsetzungsebene außerhalb dieser Hierarchie (siehe L6, SEC-GATE).
+A14 (Sicherheit) steht als cross-funktionale Durchsetzungsebene außerhalb dieser Hierarchie (SEC-GATE, siehe Master Grundprinzip 6 und Entscheidungsregel 9 — inhaltliche SEC-GATE-Definition steht noch aus, siehe Arbeitsliste FS-07-Folgepunkt).
 
 Kein Auftrag erreicht eine Fachabteilung ohne vorherige Koordination durch A01.
 Ablaufdetails → L5 Prozessmodell.
@@ -260,3 +260,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.6 (26.07.2026): Terminologie + Struktur "GF-Einheit (00_GF)" → "Admin-Einheit (00_Admin)" durchgängig (Q7-L4-001, realer Ordner bestätigt 00_Admin). A02–A13-Abteilungsliste geprüft und bestätigt — unverändert korrekt (Q7-L4-002, Screenshot-Abgleich 26.07.2026: A05_QM, A13_Personal). Abschnitt "Standardstruktur jeder Abteilung" auf reales 5-Dateien-Schema aktualisiert (README, agentenbeschreibung, regeln, Skills, loop) — `01_Input`/`03_Output` entfernt (real gelöscht), optionale `02_Sub_Agenten`/`02_Hermes_Prozesse` ergänzt (Q7-L4-003).
 - v1.7 (26.07.2026): Neuer Abschnitt "Namenskonvention (3-Ebenen-Modell)" ergänzt — trennt Ordner-ID, interne Fachbezeichnung und Kundensicht(Black-Box)-Name je Agent. "Hermes"-Referenz in Koordinationsebene korrigiert (Missverständnis aufgelöst: kein Produktname, sondern Verwechslung mit "Harness Agent"); Kundensicht-Platzhalter jetzt "Persönlicher Assistent". Verweis auf Q7_KLAERUNGSBEDARF_Agentenmodell.md entfernt (Klärung abgeschlossen).
 - v1.8 (26.07.2026): Referenz auf L6-Abschnitt "Ausfallsicherheit (Failover)" korrigiert auf "Technische Resilienz (statt Agenten-Failover)" (Q7-L6-004: Backup-Agenten-Konzept in L6 durch technische Resilienz in `rufeKIAn()` ersetzt).
+- v1.9 (15.09.2026): FS-07 - Kaputter Verweis 'siehe L6, SEC-GATE' korrigiert auf tatsaechliche Fundstellen in Master (Grundprinzip 6, Entscheidungsregel 9). Festgestellt: SEC-GATE wird in L1/L2/L6/Master an keiner Stelle inhaltlich definiert, nur erwaehnt - separater Backlog-Punkt angelegt.
