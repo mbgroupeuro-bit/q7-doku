@@ -1,6 +1,6 @@
 # Q7 – Technisches Architekturhandbuch
 
-**Version:** 1.1
+**Version:** 1.2
 **Status:** Verbindlich
 **Referenziert von:** L8_Q7_Technik (Erweiterbarkeit)
 **Löst:** Q7-M-047, Q7-M-048, Q7-M-049, Q7-M-050, Q7-M-051, Q7-M-052, Q7-M-053, Q7-M-060
@@ -37,11 +37,11 @@ Nicht jede Komponente benötigt denselben Resilienzgrad; Anforderungen werden je
 
 | Datenklasse | Store-Typ | Beispiel |
 |---|---|---|
-| Relationale Geschäftsdaten | PostgreSQL | Mandanten, Cases, Lizenzen |
-| Wissens-/Artefakt-Embeddings | Vektor-DB | Retrieval für Q7_Wissens_Artefaktmodell_v1.1.md |
+| Relationale Geschäftsdaten | PostgreSQL | Lizenznehmer, Cases, Lizenzen |
+| Wissens-/Artefakt-Embeddings | Vektor-DB | Retrieval für Q7_Wissens_Artefaktmodell_v1_2.md |
 | Dokumente/Dateien | Objektspeicher | Outputs, hochgeladene Dateien |
 | Audit-/Protokolldaten | Append-only Store | Protokoll-Modul, Evidence Records (siehe Q7-M-060) |
-| Secrets | Secret Manager | siehe Q7_Sicherheitsmodell_v1.5.md |
+| Secrets | Secret Manager | siehe Q7_Sicherheitsmodell_v1_6.md |
 
 Jede Datenklasse besitzt genau einen zuständigen Store-Typ; Mischablage derselben Klasse über mehrere Store-Typen ist nicht zulässig (Konsistenz, siehe L7 Grundprinzip 4).
 
@@ -54,14 +54,14 @@ Jeder Connector (siehe L8 Integrationen) durchläuft:
 ```text
 Registrierung (Connector-ID, Zielsystem, unterstützte Operationen)
 ↓
-Konfiguration je Mandant (siehe Q7_Tenant_Modell_v1.md)
+Konfiguration je Lizenznehmer (siehe Q7_Tenant_Modell_v1_2.md)
 ↓
-Aktiver Betrieb (inkl. DLP-Prüfung ausgehender Daten, siehe Q7_Sicherheitsmodell_v1.5.md)
+Aktiver Betrieb (inkl. DLP-Prüfung ausgehender Daten, siehe Q7_Sicherheitsmodell_v1_6.md)
 ↓
 Deaktivierung / Außerbetriebnahme (Daten-Handling bei Abschaltung definiert)
 ```
 
-Kein Connector greift direkt auf interne Q7-Datenstrukturen zu; jeder Connector kommuniziert ausschließlich über das Tool Gateway (siehe Q7_Sicherheitsmodell_v1.5.md).
+Kein Connector greift direkt auf interne Q7-Datenstrukturen zu; jeder Connector kommuniziert ausschließlich über das Tool Gateway (siehe Q7_Sicherheitsmodell_v1_6.md).
 
 ---
 
@@ -71,8 +71,8 @@ Q7 wird in zwei Deployment-Modi angeboten:
 
 | Modus | Zielgruppe | Merkmal |
 |---|---|---|
-| SaaS | Standard-Lizenznehmer (Solo, Team) | Von Anbieter betriebene Multi-Tenant-Plattform (siehe Q7_Tenant_Modell_v1.md) |
-| Private Cloud | Enterprise, Regulated Enterprise | Dedizierte Instanz, EU-Hosting (siehe Q7_Lizenz_und_Deployment_v1.1.md, Editionen) |
+| SaaS | Standard-Lizenznehmer (Solo, Team) | Von Anbieter betriebene Multi-Tenant-Plattform (siehe Q7_Tenant_Modell_v1_2.md) |
+| Private Cloud | Enterprise, Regulated Enterprise | Dedizierte Instanz, EU-Hosting (siehe Q7_Lizenz_und_Deployment_v1_2.md, Editionen) |
 
 Hosting-Entscheidung (z. B. Hetzner, EU-basiert) ist Teil der Infrastruktur-Umsetzung, nicht dieses Architekturhandbuchs — dieses Dokument definiert nur, dass beide Modi architektonisch unterstützt werden müssen.
 
@@ -96,11 +96,11 @@ Fail-Closed-Prinzip: Bei Ausfall der Policy Engine werden Zugriffe verweigert, n
 Ergänzend zu L8 „Protokollierung" werden KI-spezifische Ereignisse erfasst:
 
 - Traces (vollständiger Ausführungspfad eines Agenten-Aufrufs)
-- Kosten (Token-/API-Verbrauch je Case, Mandant)
+- Kosten (Token-/API-Verbrauch je Case, Lizenznehmer)
 - Retrieval-Nachvollziehbarkeit (welche Artefaktversionen abgerufen wurden, siehe Execution Evidence Record)
-- Tool-Aufrufe (siehe Q7_Sicherheitsmodell_v1.5.md, Tool Gateway Audit)
+- Tool-Aufrufe (siehe Q7_Sicherheitsmodell_v1_6.md, Tool Gateway Audit)
 
-Diese Daten dienen sowohl Debugging als auch Abrechnung (siehe Q7_Lizenz_und_Deployment_v1.1.md, Nutzungsmetriken).
+Diese Daten dienen sowohl Debugging als auch Abrechnung (siehe Q7_Lizenz_und_Deployment_v1_2.md, Nutzungsmetriken).
 
 ---
 
@@ -129,7 +129,7 @@ Konkrete RPO/RTO-Zielwerte werden je nach Hosting-Umgebung in der Infrastruktur-
 # Geltungsbereich
 
 Dieses Dokument definiert ausschließlich Datenarchitektur, Integrationsarchitektur, Deployment, Resilienz, Observability und Restore-Strategie.
-Es vertieft L8 (Technik) und verweist auf Q7_Tenant_Modell_v1.md, Q7_Sicherheitsmodell_v1.5.md und Q7_Lizenz_und_Deployment_v1.1.md.
+Es vertieft L8 (Technik) und verweist auf Q7_Tenant_Modell_v1_2.md, Q7_Sicherheitsmodell_v1_6.md und Q7_Lizenz_und_Deployment_v1_2.md.
 Konkrete Infrastruktur-Werte (Hosting, RPO/RTO-Zahlen) → separate Infrastruktur-Dokumentation.
 Es ersetzt keine Inhalte dieser Dokumente und dupliziert sie nicht (SSOT, siehe L2 Dokumentenregeln).
 
@@ -147,3 +147,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 **Änderungsprotokoll:**
 - v1.0 (09.07.2026): Ausgangsfassung. Löst Q7-M-047–053, Q7-M-060.
 - v1.1 (27.07.2026): Terminologie „GF" → „Admin" (Q7-VERT-006). Resilienzmodell-Referenz auf L6 „Technische Resilienz" aktualisiert (statt veraltetem Failover/Master-Backup). Verweise auf Sicherheitsmodell und Lizenzmodell auf v1.5/v1.1 aktualisiert.
+- v1.2 (19.09.2026): "Mandanten" (Datenarchitektur-Beispiel) → "Lizenznehmer". Interne Querverweise auf reale Dateinamen mit Minor-Version korrigiert (Q7_Wissens_Artefaktmodell_v1_2.md, Q7_Sicherheitsmodell_v1_6.md, Q7_Tenant_Modell_v1_2.md, Q7_Lizenz_und_Deployment_v1_2.md).

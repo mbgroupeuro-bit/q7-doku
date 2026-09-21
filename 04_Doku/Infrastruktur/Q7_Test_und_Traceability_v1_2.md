@@ -1,6 +1,6 @@
 # Q7 – Test- und Traceability-Modell
 
-**Version:** 1.1
+**Version:** 1.2
 **Status:** Verbindlich
 **Referenziert von:** L8_Q7_Technik
 **Löst:** Q7-M-073, Q7-M-074, Q7-M-075
@@ -35,6 +35,8 @@ Workflows, Prompts, Retrieval-Verhalten, Policy-Entscheidungen und Outputs werde
 Das Mängelregister (`Q7_Maengel_Loesungsvorschlaege_vX.md`) bleibt ein eigenständiges Dokument (SSOT für Mangel-Beschreibung, Lösungsoptionen, Entscheidung) und wird **nicht** in L2 Governance oder dieses Dokument integriert.
 
 **Ablageort:** `04_Doku/Infrastruktur/Q7_Maengel_Loesungsvorschlaege_vX.md` — analog zu den zehn Vertiefungsdokumenten, da es strukturell dieselbe Funktion erfüllt (Vertiefung/Nachweis, keine eigene Architekturebene).
+
+**Offen (Q7-VERT2-007):** Diese Datei ist im aktuellen Infrastruktur-Ordner nicht auffindbar — Ablageort ist beschrieben, die Datei selbst fehlt oder wurde noch nicht angelegt.
 
 Die Traceability Matrix (siehe unten) verweist auf Mangel-IDs, dupliziert deren Inhalt aber nicht (SSOT, siehe L2 Dokumentenregeln).
 
@@ -79,11 +81,11 @@ Die Matrix wird als eigenes Register geführt (nicht in diesem Dokument duplizie
 | Artefakttyp | Testansatz |
 |---|---|
 | Code | Klassische Unit-/Integrationstests |
-| Workflows | Zustandsübergangstests je Case-Zustand (siehe Q7_Workflow_Detailmodell_v1.1.md) — jeder definierte Übergang wird mindestens einmal ausgelöst und geprüft |
-| Prompts | Regressionstests gegen definierte Beispiel-Inputs inkl. Prompt-Injection-Testfälle (siehe Q7_Sicherheitsmodell_v1.5.md) |
-| Retrieval | Prüfung, dass Metadaten-Vorfilterung vor Volltext-/Vektorsuche greift (siehe Q7_Wissens_Artefaktmodell_v1.1.md); Prüfung auf korrekte Scope-/Berechtigungsgrenzen |
-| Policies | Testfälle je Enforcement Point (siehe Q7_Policy_Engine_v1.2.md) — insbesondere Fail-Closed-Verhalten bei Ausfall |
-| Outputs | Prüfung, dass jeder Output einen vollständigen Execution Evidence Record besitzt (siehe Q7_Wissens_Artefaktmodell_v1.1.md) |
+| Workflows | Zustandsübergangstests je Case-Zustand (siehe Q7_Workflow_Detailmodell_v1_2.md) — jeder definierte Übergang wird mindestens einmal ausgelöst und geprüft |
+| Prompts | Regressionstests gegen definierte Beispiel-Inputs inkl. Prompt-Injection-Testfälle (siehe Q7_Sicherheitsmodell_v1_6.md) |
+| Retrieval | Prüfung, dass Metadaten-Vorfilterung vor Volltext-/Vektorsuche greift (siehe Q7_Wissens_Artefaktmodell_v1_2.md); Prüfung auf korrekte Scope-/Berechtigungsgrenzen |
+| Policies | Testfälle je Enforcement Point (siehe Q7_Policy_Engine_v1_3.md) — insbesondere Fail-Closed-Verhalten bei Ausfall |
+| Outputs | Prüfung, dass jeder Output einen vollständigen Execution Evidence Record besitzt (siehe Q7_Wissens_Artefaktmodell_v1_2.md) |
 
 Jeder neue Testfall wird der Traceability Matrix zugeordnet (welches Kriterium/welcher Mangel wird dadurch geprüft).
 
@@ -119,3 +121,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 **Änderungsprotokoll:**
 - v1.0 (09.07.2026): Ausgangsfassung. Löst Q7-M-073, Q7-M-074, Q7-M-075.
 - v1.1 (27.07.2026): Terminologie „GF" → „Admin" (Q7-VERT-008). Abdeckungsstand aktualisiert. Verweise auf Workflow-Detailmodell und Policy Engine auf v1.1/v1.2 aktualisiert.
+- v1.2 (19.09.2026): Interne Querverweise auf reale Dateinamen mit Minor-Version korrigiert (Q7_Workflow_Detailmodell_v1_2.md, Q7_Sicherheitsmodell_v1_6.md, Q7_Wissens_Artefaktmodell_v1_2.md, Q7_Policy_Engine_v1_3.md). Fehlen des Mängelregisters im realen Infrastruktur-Ordner als offener Punkt ergänzt (Q7-VERT2-007) — widerspricht dem eigenen Akzeptanzkriterium „eindeutig auffindbar", solange die Datei fehlt.

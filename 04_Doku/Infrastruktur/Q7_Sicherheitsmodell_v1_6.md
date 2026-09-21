@@ -1,6 +1,6 @@
 # Q7 – Sicherheitsmodell
 
-**Version:** 1.5
+**Version:** 1.6
 **Status:** Verbindlich
 **Referenziert von:** L8_Q7_Technik (Sicherheit / Integrationen)
 **Löst:** Q7-M-037, Q7-M-054, Q7-M-055, Q7-M-056, Q7-M-057, Q7-M-058
@@ -45,7 +45,7 @@ Alle Tool-Aufrufe (siehe L6 Aufgaben eines Agenten) laufen über ein zentrales T
 ```text
 Agent → Tool-Anfrage
 ↓
-Policy-Prüfung (siehe Q7_Policy_Engine_v1.2.md, Enforcement Point „Tool-Aufruf")
+Policy-Prüfung (siehe Q7_Policy_Engine_v1_3.md, Enforcement Point „Tool-Aufruf")
 ↓
 Sandbox-Ausführung (isolierte Umgebung, kein direkter Zugriff auf andere Agenten/Daten)
 ↓
@@ -69,17 +69,17 @@ Sanitization (Erkennung instruktionsähnlicher Muster)
 ↓
 Bei Verdacht: Quarantäne (`QUARANTAENE/01_Verdacht`) statt direkter Verarbeitung
 ↓
-Policy Check (siehe Q7_Policy_Engine_v1.2.md)
+Policy Check (siehe Q7_Policy_Engine_v1_3.md)
 ↓
 Sandbox-Verarbeitung (isoliert, ohne Schreibrechte auf produktive Bereiche)
 ↓
 Freigabe zur regulären Verarbeitung
 ```
 
-Inhalte mit bestätigtem Manipulationsversuch werden nicht gelöscht, sondern in `QUARANTAENE/02_Bestaetigt` verschoben und lösen eine Eskalation aus (siehe Q7_Workflow_Detailmodell_v1.1.md, Fehlerpfade & Eskalation).
-Die abschließende Sicherheitsprüfung vor jeder Auslieferung erfolgt durch **A14 (SEC-GATE)** — die cross-funktionale Durchsetzungsebene mit blockierender Autorität innerhalb der A00–A14-Nummerierung, nicht als separate Instanz.
+Inhalte mit bestätigtem Manipulationsversuch werden nicht gelöscht, sondern in `QUARANTAENE/02_Bestaetigt` verschoben und lösen eine Eskalation aus (siehe Q7_Workflow_Detailmodell_v1_2.md, Fehlerpfade & Eskalation).
+Die abschließende Sicherheitsprüfung vor jeder Auslieferung erfolgt durch **A14 (SEC-GATE)** — die cross-funktionale Durchsetzungsebene mit blockierender Autorität innerhalb der A00–A14-Nummerierung, nicht als separate Instanz. Fachliche Gesamtdefinition von SEC-GATE (Kanal A/B, B1 RBAC, B2 Prompt-Schutz): siehe `SEC-GATE_Definition_v1.0.md`.
 
-**Offen (Admin-Entscheidung erforderlich):** Der physische Ablageort der Quarantäne wurde beim Root-Umzug (25.07.2026) nicht wiederhergestellt. Siehe `Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md` für Optionen zur Neufestlegung. Bis zur Entscheidung sind die Quarantäne-Pfade als logische Bezeichner geführt.
+**Offen (Admin-Entscheidung erforderlich):** Der physische Ablageort der Quarantäne wurde beim Root-Umzug (25.07.2026) nicht wiederhergestellt. Siehe `Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md` für Optionen zur Neufestlegung — Datei aktuell nicht auffindbar (siehe offener Punkt Q7-VERT2-004). Bis zur Entscheidung sind die Quarantäne-Pfade als logische Bezeichner geführt. Der Verweis auf einen physischen Pfad `01_INPUT/01_Quarantaene/` in `SEC-GATE_Definition_v1.0.md` weicht davon ab (möglicher Speicherort-Wechsel, ungeklärt — siehe offener Punkt Q7-VERT2-006).
 
 ---
 
@@ -101,7 +101,7 @@ Ein Agent führt keine als „Daten" klassifizierte Textpassage als Instruktion 
 
 Ergänzend zu Q7-M-062/063 (Trennung Kunden-UI/Admin-Konsole) wird interne Systemlogik zusätzlich geschützt durch:
 
-- **Rollengrenzen**: Zugriff auf interne Prozess-IDs, Agentennamen, Systemlogik ausschließlich für berechtigte interne Rollen (siehe L6 RBAC, Q7_Policy_Engine_v1.2.md).
+- **Rollengrenzen**: Zugriff auf interne Prozess-IDs, Agentennamen, Systemlogik ausschließlich für berechtigte interne Rollen (siehe L6 RBAC, Q7_Policy_Engine_v1_3.md).
 - **Secret-Trennung**: Zugangsdaten zu internen Komponenten sind nicht über Kunden-Sessions erreichbar, unabhängig von UI-Gestaltung.
 - **Admin-Grenzen**: Administrative Funktionen sind technisch von Kundenfunktionen getrennt, nicht nur durch UI-Ausblendung (siehe Q7-M-062).
 
@@ -114,7 +114,7 @@ Diese Schutzmaßnahmen gelten unabhängig davon, ob und wie die Kunden-UI System
 - Alle Zugangsdaten (API-Keys, Tokens, Zertifikate) werden ausschließlich im Secret Manager gespeichert.
 - Kein Secret erscheint in Prompts, Wissensobjekten, Protokollen oder Fehlermeldungen im Klartext.
 - Rotation von Secrets erfolgt nach definiertem Turnus je Kritikalität; Rotation wird protokolliert.
-- Zugriff auf den Secret Manager selbst unterliegt derselben Policy-Prüfung wie jeder andere kritische Zugriff (siehe Q7_Policy_Engine_v1.2.md).
+- Zugriff auf den Secret Manager selbst unterliegt derselben Policy-Prüfung wie jeder andere kritische Zugriff (siehe Q7_Policy_Engine_v1_3.md).
 
 ---
 
@@ -125,11 +125,11 @@ Ergänzend zu den DLP-Connector-Policies (siehe unten) existiert eine strikte Da
 - Personenbezogene Daten in besonders sensibler Ausprägung (siehe TRESOR/K4_Personen)
 - Zugangsdaten in Rohform (siehe TRESOR/K4_Zugangsdaten) — ergänzend zum Secret Manager, siehe „Secret & Key Management"
 
-**Abgrenzung zu regulärem DLP:** Reguläres DLP (siehe unten) prüft, ob eine Datenklasse über einen *bestimmten* Kanal raus darf. Die Klasse „Niemals Extern" darf über *keinen* Kanal raus — auch nicht an einen KI-Modell-Anbieter über die OpenRouter-Schnittstelle (siehe Q7_Technisches_Architekturhandbuch_v1.1.md, Integrationsarchitektur). Das schließt ausdrücklich ein, dass kein Agent (A00–A14) Inhalte dieser Klasse in einem Prompt an ein extern gehostetes Modell übermitteln darf.
+**Abgrenzung zu regulärem DLP:** Reguläres DLP (siehe unten) prüft, ob eine Datenklasse über einen *bestimmten* Kanal raus darf. Die Klasse „Niemals Extern" darf über *keinen* Kanal raus — auch nicht an einen KI-Modell-Anbieter über die OpenRouter-Schnittstelle (siehe Q7_Technisches_Architekturhandbuch_v1_2.md, Integrationsarchitektur). Das schließt ausdrücklich ein, dass kein Agent (A00–A14) Inhalte dieser Klasse in einem Prompt an ein extern gehostetes Modell übermitteln darf.
 
-**Technische Durchsetzung:** Fachlich spezifiziert in `Q7_Policy_Engine_v1.2.md`, Abschnitt „Absoluter Enforcement Point: TRESOR" — Zugriff wird dort grundsätzlich blockiert, unabhängig von RBAC/ABAC-Rolle, auch für A00. Technische Implementierung (Verankerung im Retrieval-/Dateizugriffslayer) noch nicht umgesetzt.
+**Technische Durchsetzung:** Fachlich spezifiziert in `Q7_Policy_Engine_v1_3.md`, Abschnitt „Absoluter Enforcement Point: TRESOR" — Zugriff wird dort grundsätzlich blockiert, unabhängig von RBAC/ABAC-Rolle, auch für A00. Technische Implementierung (Verankerung im Retrieval-/Dateizugriffslayer) noch nicht umgesetzt.
 
-**Offen (Admin-Entscheidung erforderlich):** Der physische Ablageort des TRESOR wurde beim Root-Umzug (25.07.2026) nicht wiederhergestellt. Siehe `Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md` für Optionen zur Neufestlegung.
+**Offen (Admin-Entscheidung erforderlich):** Der physische Ablageort des TRESOR wurde beim Root-Umzug (25.07.2026) nicht wiederhergestellt. Siehe `Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md` für Optionen zur Neufestlegung — Datei aktuell nicht auffindbar (siehe offener Punkt Q7-VERT2-004).
 
 ---
 
@@ -140,14 +140,14 @@ Jeder Output, der über eine Integration/Connector-Schnittstelle (siehe L8 Integ
 ```text
 Output-Entwurf
 ↓
-Data-Classification-Prüfung (welche Datenklassen sind enthalten, siehe Q7_Tenant_Modell_v1.md)
+Data-Classification-Prüfung (welche Datenklassen sind enthalten, siehe Q7_Tenant_Modell_v1_2.md)
 ↓
 Output Check (Abgleich gegen Connector-Policy: darf diese Datenklasse über diesen Kanal verlassen?)
 ↓
 Freigabe zum Versand / Blockierung mit Eskalation
 ```
 
-Connector-Policies werden je Integration und Mandant konfiguriert (z. B. „Finanzdaten dürfen nicht über WhatsApp-Integration ausgegeben werden").
+Connector-Policies werden je Integration und Lizenznehmer konfiguriert (z. B. „Finanzdaten dürfen nicht über WhatsApp-Integration ausgegeben werden").
 
 ---
 
@@ -167,7 +167,7 @@ Connector-Policies werden je Integration und Mandant konfiguriert (z. B. „Fina
 # Geltungsbereich
 
 Dieses Dokument definiert ausschließlich Tool-Sandboxing, Prompt-Injection-Abwehr, Instruktions-/Datentrennung, IP-Schutz, Secret-Management und DLP.
-Es vertieft L8 (Technik) und verweist auf Q7_Policy_Engine_v1.2.md (Enforcement), Q7_Workflow_Detailmodell_v1.1.md (Eskalation) und die Ablagestruktur (QUARANTAENE).
+Es vertieft L8 (Technik) und verweist auf Q7_Policy_Engine_v1_3.md (Enforcement), Q7_Workflow_Detailmodell_v1_2.md (Eskalation) und die Ablagestruktur (QUARANTAENE).
 Es ersetzt keine Inhalte dieser Dokumente und dupliziert sie nicht (SSOT, siehe L2 Dokumentenregeln).
 
 ---
@@ -188,3 +188,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.3 (11.07.2026): Quarantäne-Pfade korrigiert nach realer Bestandsaufnahme.
 - v1.4 (11.07.2026): Verweis auf Policy Engine v1.1 aktualisiert.
 - v1.5 (27.07.2026): Terminologie „GF" → „Admin" durchgängig (Q7-VERT-002). Quarantäne-Pfade von `01_INPUT/01_Quarantaene/...` auf logische Bezeichner `QUARANTAENE/...` umgestellt — physischer Pfad offen bis Admin-Entscheidung (siehe Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md). TRESOR-Pfade von `04_TRESOR/...` auf generischen TRESOR-Bereich umgestellt. Verweis auf Policy Engine auf v1.2 aktualisiert.
+- v1.6 (19.09.2026): „Kunde"-Begriffe der UI/Interface-Familie (Kunden-UI, Kunden-Session, Kundenfunktionen) bewusst unverändert gelassen (Admin-Entscheidung). Interne Querverweise auf reale Dateinamen mit Minor-Version korrigiert (Q7_Policy_Engine_v1_3.md, Q7_Workflow_Detailmodell_v1_2.md, Q7_Technisches_Architekturhandbuch_v1_2.md, Q7_Tenant_Modell_v1_2.md). Verweis auf `SEC-GATE_Definition_v1.0.md` als fachliche SEC-GATE-Gesamtdefinition ergänzt. Widerspruch zwischen dortigem physischem Quarantäne-Pfad und hier geführtem logischen Bezeichner als offener Punkt vermerkt (Q7-VERT2-006). Hinweis ergänzt, dass `Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md` aktuell nicht auffindbar ist (Q7-VERT2-004).

@@ -1,6 +1,6 @@
 # Q7 – Lizenz- und Deployment-Modell
 
-**Version:** 1.1
+**Version:** 1.2
 **Status:** Verbindlich
 **Referenziert von:** L4_Q7_Organisation (Modulare Abteilungen/Buchungsprinzip), L8_Q7_Technik (Erweiterbarkeit)
 **Löst:** Q7-M-065, Q7-M-066, Q7-M-067, Q7-M-068, Q7-M-071
@@ -9,7 +9,7 @@
 
 # Zweck
 
-Dieses Dokument vertieft L4 (Buchungsprinzip) und L8 (technische Erweiterbarkeit) um das Lizenzmodell, die technische Durchsetzung von Buchungsstatus über Feature Flags, die Trennung von Anbieter-IP und Kundendaten sowie das Update-/Rollback-Modell.
+Dieses Dokument vertieft L4 (Buchungsprinzip) und L8 (technische Erweiterbarkeit) um das Lizenzmodell, die technische Durchsetzung von Buchungsstatus über Feature Flags, die Trennung von Anbieter-IP und Lizenznehmerdaten sowie das Update-/Rollback-Modell.
 
 ---
 
@@ -25,7 +25,7 @@ Lizenzgrenzen (Module, Seats, Nutzungslimits) werden durch das Feature-Flag-/Ent
 
 ## 3. IP-Schichtung ist bindend
 
-Anbieter-IP und Kundendaten sind in getrennten, klar definierten Schichten geführt. Keine Schicht vermischt Inhalte einer anderen.
+Anbieter-IP und Lizenznehmerdaten sind in getrennten, klar definierten Schichten geführt. Keine Schicht vermischt Inhalte einer anderen.
 
 ## 4. Kein Update ohne Rückweg
 
@@ -35,7 +35,7 @@ Jede Systemaktualisierung ist versioniert und rückrollbar, bevor sie produktiv 
 
 # Licensing Service
 
-Der Licensing Service verwaltet je Mandant (siehe Q7_Tenant_Modell_v1.md):
+Der Licensing Service verwaltet je Lizenznehmer (siehe Q7_Tenant_Modell_v1_2.md):
 
 | Attribut | Beschreibung |
 |---|---|
@@ -49,12 +49,12 @@ Der Licensing Service verwaltet je Mandant (siehe Q7_Tenant_Modell_v1.md):
 
 | Edition | Zielgruppe | Charakteristik |
 |---|---|---|
-| Q7 Solo | Kleinstunternehmen, Einzelunternehmer | Begrenzte Modulauswahl, geringe Seat-/Nutzungslimits, logische Mandantenisolation (Standard) |
-| Q7 Team | Kleine bis mittlere Unternehmen | Erweiterte Modulauswahl, Sub-Mandanten optional (siehe Q7_Tenant_Modell_v1.md) |
-| Q7 Enterprise | Größere Unternehmen, Konzerne | Vollständige Modulauswahl, hierarchische Sub-Mandanten, physische Isolation optional buchbar |
-| Q7 Regulated Enterprise | Regulierte Branchen | Wie Q7 Enterprise, zusätzlich physische Isolation verpflichtend für definierte Datenklassen (siehe Q7_Tenant_Modell_v1.md, Isolationsentscheidung) |
+| Q7 Solo | Kleinstunternehmen, Einzelunternehmer | Begrenzte Modulauswahl, geringe Seat-/Nutzungslimits, logische Isolation je Lizenznehmer (Standard) |
+| Q7 Team | Kleine bis mittlere Unternehmen | Erweiterte Modulauswahl, Sub-Lizenznehmer optional (siehe Q7_Tenant_Modell_v1_2.md) |
+| Q7 Enterprise | Größere Unternehmen, Konzerne | Vollständige Modulauswahl, hierarchische Sub-Lizenznehmer, physische Isolation optional buchbar |
+| Q7 Regulated Enterprise | Regulierte Branchen | Wie Q7 Enterprise, zusätzlich physische Isolation verpflichtend für definierte Datenklassen (siehe Q7_Tenant_Modell_v1_2.md, Isolationsentscheidung) |
 
-Die Edition ist ein Attribut des Licensing Service und bestimmt die verfügbaren Obergrenzen für Module, Seats und Isolationsoptionen — sie bucht diese nicht automatisch, sondern definiert den maximal möglichen Rahmen je Mandant.
+Die Edition ist ein Attribut des Licensing Service und bestimmt die verfügbaren Obergrenzen für Module, Seats und Isolationsoptionen — sie bucht diese nicht automatisch, sondern definiert den maximal möglichen Rahmen je Lizenznehmer.
 
 ---
 
@@ -63,14 +63,14 @@ Die Edition ist ein Attribut des Licensing Service und bestimmt die verfügbaren
 ```text
 Zugriffsversuch auf Modul/Funktion
 ↓
-Entitlement-Prüfung (ist Modul/Funktion für diesen Mandanten gebucht?)
+Entitlement-Prüfung (ist Modul/Funktion für diesen Lizenznehmer gebucht?)
 ↓
 Limit-Prüfung (ist Nutzungslimit erreicht?)
 ↓
 Freigabe / Blockierung mit Hinweis auf Upgrade-Möglichkeit
 ```
 
-Die Entitlement-Prüfung ist ein Enforcement Point der Policy Engine (siehe Q7_Policy_Engine_v1.2.md) — Lizenzgrenzen werden wie Zugriffsrechte technisch durchgesetzt, nicht separat implementiert.
+Die Entitlement-Prüfung ist ein Enforcement Point der Policy Engine (siehe Q7_Policy_Engine_v1_3.md) — Lizenzgrenzen werden wie Zugriffsrechte technisch durchgesetzt, nicht separat implementiert.
 
 Nutzungsmetriken (Seats aktiv, Cases pro Zeitraum, Speicherverbrauch) werden fortlaufend erfasst und sind Grundlage für Abrechnung sowie für automatisierte Upgrade-Hinweise.
 
@@ -82,10 +82,10 @@ Nutzungsmetriken (Seats aktiv, Cases pro Zeitraum, Speicherverbrauch) werden for
 |---|---|---|
 | Platform Core | Q7-Systemlogik, Policy Engine, Workflow-Engine-Kern | Anbieter (Mokid) |
 | Q7 Knowledge | Vorgefertigte Knowledge-Artefakte, SOPs, Standardprozesse | Anbieter (Mokid) |
-| Tenant Config | Mandantenspezifische Konfiguration, gebuchte Module, angepasste Prozesse | Mandant (im Rahmen der Lizenz) |
-| Customer Data | Kundendaten des Mandanten (Cases, Dokumente, Kommunikation) | Mandant, vollständig |
+| Tenant Config | Lizenznehmerspezifische Konfiguration, gebuchte Module, angepasste Prozesse | Lizenznehmer (im Rahmen der Lizenz) |
+| Customer Data | Lizenznehmerdaten (Cases, Dokumente, Kommunikation) | Lizenznehmer, vollständig |
 
-Zugriff auf „Platform Core" und „Q7 Knowledge" ist für keinen Mandanten und keine Kunden-Rolle möglich (siehe Q7_UI_Spezifikation_v1.md, Black-Box-Prinzip). Mandanten sehen und bearbeiten ausschließlich „Tenant Config" und „Customer Data" innerhalb der eigenen Isolationsgrenzen (siehe Q7_Tenant_Modell_v1.md).
+Zugriff auf „Platform Core" und „Q7 Knowledge" ist für keinen Lizenznehmer und keine Lizenznehmer-Rolle möglich (siehe Q7_UI_Spezifikation_v1_2.md, Black-Box-Prinzip). Lizenznehmer sehen und bearbeiten ausschließlich „Tenant Config" und „Customer Data" innerhalb der eigenen Isolationsgrenzen (siehe Q7_Tenant_Modell_v1_2.md).
 
 ---
 
@@ -98,22 +98,22 @@ Staging-Prüfung (Kompatibilität mit bestehenden Tenant Configs)
 ↓
 Versionierte Release-Freigabe (Admin, siehe L1 Grundprinzip 9)
 ↓
-Migration (pro Mandant, siehe Q7_Workflow_Detailmodell_v1.1.md „Prozessversionen bei laufenden Cases" für betroffene Prozesse)
+Migration (pro Lizenznehmer, siehe Q7_Workflow_Detailmodell_v1_2.md „Prozessversionen bei laufenden Cases" für betroffene Prozesse)
 ↓
 Produktivsetzung
 ↓
 Rollback-Option (definierter Zeitraum, vorherige Version bleibt abrufbar)
 ```
 
-„Tenant Config" und „Customer Data" sind von Platform-Core-Updates strukturell entkoppelt: ein Rollback des Platform Core verändert keine mandantenspezifischen Daten.
+„Tenant Config" und „Customer Data" sind von Platform-Core-Updates strukturell entkoppelt: ein Rollback des Platform Core verändert keine lizenznehmerspezifischen Daten.
 
 ---
 
 # Akzeptanzkriterien
 
-- Kein Mandant kann nachweislich auf ein nicht gebuchtes Modul zugreifen, auch nicht über direkte Navigation.
+- Kein Lizenznehmer kann nachweislich auf ein nicht gebuchtes Modul zugreifen, auch nicht über direkte Navigation.
 - Jedes erreichte Nutzungslimit blockiert die betroffene Funktion nachweislich, nicht nur informativ.
-- Kein Kunden-Zugriff erreicht nachweislich die Schichten „Platform Core" oder „Q7 Knowledge".
+- Kein Lizenznehmer-Zugriff erreicht nachweislich die Schichten „Platform Core" oder „Q7 Knowledge".
 - Jede Release-Version ist eindeutig versioniert und innerhalb des definierten Zeitraums rückrollbar, ohne Verlust von Tenant Config oder Customer Data.
 - Jede Migrationsentscheidung im Rahmen eines Updates ist auditiert und Admin-freigegeben.
 
@@ -122,7 +122,7 @@ Rollback-Option (definierter Zeitraum, vorherige Version bleibt abrufbar)
 # Geltungsbereich
 
 Dieses Dokument definiert ausschließlich Lizenzierung, Feature Flags, IP-Schichtung und Update-/Rollback-Modell.
-Es vertieft L4 (Buchungsprinzip) und L8 (Erweiterbarkeit) und verweist auf Q7_Tenant_Modell_v1.md, Q7_Policy_Engine_v1.2.md und Q7_Workflow_Detailmodell_v1.1.md.
+Es vertieft L4 (Buchungsprinzip) und L8 (Erweiterbarkeit) und verweist auf Q7_Tenant_Modell_v1_2.md, Q7_Policy_Engine_v1_3.md und Q7_Workflow_Detailmodell_v1_2.md.
 Es ersetzt keine Inhalte dieser Dokumente und dupliziert sie nicht (SSOT, siehe L2 Dokumentenregeln).
 
 ---
@@ -130,7 +130,7 @@ Es ersetzt keine Inhalte dieser Dokumente und dupliziert sie nicht (SSOT, siehe 
 # Änderungsregel
 
 Änderungen am Lizenz- und Deployment-Modell dürfen die IP-Schichtentrennung nicht aufweichen.
-Jede Änderung ist auf Auswirkungen für bestehende Mandantenlizenzen zu prüfen.
+Jede Änderung ist auf Auswirkungen für bestehende Lizenznehmerlizenzen zu prüfen.
 Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 
 ---
@@ -139,3 +139,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 **Änderungsprotokoll:**
 - v1.0 (09.07.2026): Ausgangsfassung. Löst Q7-M-065–068, Q7-M-071.
 - v1.1 (27.07.2026): Terminologie „GF" → „Admin" durchgängig (Q7-VERT-005). Release-Freigabe-Instanz präzisiert. Verweis auf Policy Engine auf v1.2 aktualisiert.
+- v1.2 (19.09.2026): Terminologie „Mandant"/„Kundendaten" → „Lizenznehmer"/„Lizenznehmerdaten" durchgängig (Q7-VERT2-003). Interne Querverweise auf reale Dateinamen mit Minor-Version korrigiert (Q7_Tenant_Modell_v1_2.md, Q7_Policy_Engine_v1_3.md, Q7_Workflow_Detailmodell_v1_2.md, Q7_UI_Spezifikation_v1_2.md).

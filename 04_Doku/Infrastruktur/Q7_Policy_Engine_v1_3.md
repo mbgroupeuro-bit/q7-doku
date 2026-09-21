@@ -1,6 +1,6 @@
 # Q7 – Policy Engine & ABAC
 
-**Version:** 1.2
+**Version:** 1.3
 **Status:** Verbindlich
 **Referenziert von:** L6_Q7_Agentenmodell (Zugriffsrechte)
 **Löst:** Q7-M-015, Q7-M-022, Q7-M-033, Q7-M-034
@@ -18,7 +18,7 @@ Es vertieft L6 (Agentenmodell), ohne dessen RBAC-Grundlage zu ersetzen (siehe L6
 
 ## 1. RBAC bleibt Basis, ABAC ergänzt
 
-Die pauschale Rollenzuordnung aus L6 (Führungs-, Spezial-, Unterstützungsagenten) bestimmt weiterhin den groben Zugriffsrahmen. ABAC verfeinert diesen Rahmen anhand konkreter Attribute, hebt ihn aber nie auf — ein Zugriff, der bereits per RBAC ausgeschlossen ist, kann durch ABAC nicht freigegeben werden.
+Die pauschale Rollenzuordnung aus L6 (Führungs-, Spezial-, Unterstützungs-, Aufsichtsagenten) bestimmt weiterhin den groben Zugriffsrahmen. ABAC verfeinert diesen Rahmen anhand konkreter Attribute, hebt ihn aber nie auf — ein Zugriff, der bereits per RBAC ausgeschlossen ist, kann durch ABAC nicht freigegeben werden.
 
 ## 2. Zentrale Durchsetzung (Enforcement Points)
 
@@ -43,7 +43,7 @@ Jede Policy-Entscheidung (Zulassung wie Ablehnung) wird protokolliert (siehe L2 
 | Kategorie | Beispiele |
 |---|---|
 | Nutzer/Agent | Agententyp (L6), Abteilung, Rolle, Sicherheitsfreigabe |
-| Daten | Datenklasse, Mandant/Tenant-ID (siehe Q7_Tenant_Modell_v1.md), Sensibilität, Datenraum |
+| Daten | Datenklasse, Lizenznehmer/Tenant-ID (siehe Q7_Tenant_Modell_v1_2.md), Sensibilität, Datenraum |
 | Prozess | Prozessstatus (L5), Kritikalitätsstufe, Prozess-ID |
 | Tool | Tool-Typ, Sandbox-Status, Berechtigungsstufe (siehe Q7-M-037 Tool Gateway) |
 
@@ -78,8 +78,8 @@ Die Policy Engine wird an folgenden Punkten technisch zwingend durchlaufen (kein
 - Vor jedem Zugriff eines Agenten auf die zentrale Wissensbasis (siehe L7)
 - Vor jedem Tool-Aufruf durch einen Agenten (siehe Q7-M-037 Tool Gateway)
 - Vor jeder Freigabe/Eskalation innerhalb eines Prozesses (siehe L5)
-- Vor jedem mandantenübergreifenden Datenzugriffsversuch (siehe Q7_Tenant_Modell_v1.md, Zugriffsgrenzen)
-- Vor jedem Retrieval-Zugriff auf den TRESOR-Bereich (siehe Q7_Sicherheitsmodell_v1.5.md, Datenklasse „Niemals Extern") — dieser Enforcement Point blockiert grundsätzlich, unabhängig von RBAC/ABAC-Rolle des anfragenden Agenten (siehe Abschnitt „Absoluter Enforcement Point: TRESOR" unten)
+- Vor jedem lizenznehmerübergreifenden Datenzugriffsversuch (siehe Q7_Tenant_Modell_v1_2.md, Zugriffsgrenzen)
+- Vor jedem Retrieval-Zugriff auf den TRESOR-Bereich (siehe Q7_Sicherheitsmodell_v1_6.md, Datenklasse „Niemals Extern") — dieser Enforcement Point blockiert grundsätzlich, unabhängig von RBAC/ABAC-Rolle des anfragenden Agenten (siehe Abschnitt „Absoluter Enforcement Point: TRESOR" unten)
 
 Die konkrete technische Implementierung der Enforcement Points erfolgt gemäß L8; dieses Dokument definiert das fachliche Regelmodell, nicht die Implementierung selbst.
 
@@ -103,7 +103,7 @@ Eskalation an Admin, wenn Zugriffsversuch wiederholt oder ungewöhnlich häufig 
 
 **Ausnahme:** Der Admin selbst kann TRESOR-Inhalte über einen vom Agentensystem getrennten Zugriffspfad einsehen (z. B. direkter Dateisystemzugriff außerhalb der Q7-Anwendung) — dieser Enforcement Point betrifft ausschließlich Agentenzugriffe innerhalb des Systems, nicht den Admin-eigenen Zugriff.
 
-**Offen (Admin-Entscheidung erforderlich):** Der physische Ablageort des TRESOR wurde beim Root-Umzug (25.07.2026) nicht wiederhergestellt. Siehe `Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md` für Optionen zur Neufestlegung. Bis zur Entscheidung ist dieser Enforcement Point fachlich spezifiziert, technisch nicht an einen physischen Pfad gebunden.
+**Offen (Admin-Entscheidung erforderlich):** Der physische Ablageort des TRESOR wurde beim Root-Umzug (25.07.2026) nicht wiederhergestellt. Siehe `Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md` für Optionen zur Neufestlegung — Datei aktuell nicht auffindbar (siehe offener Punkt Q7-VERT2-004). Bis zur Entscheidung ist dieser Enforcement Point fachlich spezifiziert, technisch nicht an einen physischen Pfad gebunden.
 
 ---
 
@@ -117,7 +117,7 @@ Eskalation an Admin, wenn Zugriffsversuch wiederholt oder ungewöhnlich häufig 
 
 # Akzeptanzkriterien
 
-- Kein Zugriff eines Agenten auf Wissen, Tools oder mandantenfremde Daten ist ohne vorherige Policy-Engine-Prüfung technisch möglich.
+- Kein Zugriff eines Agenten auf Wissen, Tools oder lizenznehmerfremde Daten ist ohne vorherige Policy-Engine-Prüfung technisch möglich.
 - Jede Policy-Entscheidung (Zulassung, Ablehnung, Eskalation) ist im PROTOKOLL-Modul einem konkreten Zugriffsversuch zuordenbar.
 - ABAC-Regeln können ein durch RBAC bereits ausgeschlossenes Zugriffsrecht nachweislich nicht erweitern.
 - Jeder als kritisch markierte Prozessschritt (L5) weist eine Policy-Engine-Prüfung vor Ausführung nach, nicht nachträglich.
@@ -138,7 +138,7 @@ Es ersetzt keine Inhalte dieser Dokumente und dupliziert sie nicht (SSOT, siehe 
 # Änderungsregel
 
 Änderungen am Policy-Modell dürfen bestehende RBAC-Zuordnungen aus L6 nicht unterlaufen.
-Jede Änderung ist auf Auswirkungen für Agenten, Prozesse, Wissen und Tenant-Struktur zu prüfen.
+Jede Änderung ist auf Auswirkungen für Agenten, Prozesse, Wissen und Lizenznehmer-Struktur zu prüfen.
 Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 
 ---
@@ -148,3 +148,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.0 (09.07.2026): Ausgangsfassung. Löst Q7-M-015, Q7-M-022, Q7-M-033, Q7-M-034.
 - v1.1 (11.07.2026): Abschnitt „Absoluter Enforcement Point: 04_TRESOR" ergänzt.
 - v1.2 (27.07.2026): Terminologie „GF" → „Admin" durchgängig (Q7-VERT-001). TRESOR-Pfad von `04_TRESOR` auf generischen TRESOR-Bereich umgestellt — physischer Pfad offen bis Admin-Entscheidung (siehe Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md). Verweis auf Q7_Sicherheitsmodell auf v1.5 aktualisiert.
+- v1.3 (19.09.2026): Terminologie „Mandant"/„mandantenübergreifend" → „Lizenznehmer"/„lizenznehmerübergreifend" durchgängig (Q7-VERT2-005). RBAC-Grundlage um „Aufsichtsagenten" ergänzt (konsistent mit L6 v1.8). Interne Querverweise auf reale Dateinamen mit Minor-Version korrigiert (Q7_Tenant_Modell_v1_2.md, Q7_Sicherheitsmodell_v1_6.md). Hinweis ergänzt, dass `Q7_TRESOR_Quarantaene_Entscheidung_2026-07-27.md` aktuell nicht im Infrastruktur-Ordner auffindbar ist (Q7-VERT2-004).

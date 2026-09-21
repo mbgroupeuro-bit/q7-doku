@@ -1,6 +1,6 @@
-﻿# Q7 – Agentenmodell
+# Q7 – Agentenmodell
 
-**Version:** 1.7
+**Version:** 1.8
 **Status:** Verbindlich
 
 ---
@@ -129,6 +129,7 @@ Q7 unterscheidet grundsätzlich zwischen:
 - Führungsagenten
 - Spezialagenten
 - Unterstützungsagenten
+- Aufsichtsagenten
 
 ---
 
@@ -141,7 +142,19 @@ Verantwortlich für:
 - Qualitätskontrolle
 - Entscheidungen
 
-Die zentrale Koordinationsfunktion (A01) ist ein Führungsagent (Kundensicht: „Persönlicher Assistent", siehe L4 Namenskonvention).
+Die zentrale Koordinationsfunktion (A01) ist ein Führungsagent (Lizenznehmer-Sicht: „Persönlicher Assistent", siehe L4 Namenskonvention).
+
+---
+
+## Aufsichtsagenten
+
+Verantwortlich für:
+
+- Systemweite Beobachtung aller anderen Agenten (inkl. Führungsagenten)
+- Protokollierung von Auffälligkeiten und Regelabweichungen
+- Eskalation an den Admin (keine eigenständige Entscheidungsbefugnis)
+
+A00 (Stab) ist der einzige Aufsichtsagent im System (siehe unten, „Systemweite Überwachungsfunktion (A00)").
 
 ---
 
@@ -153,7 +166,7 @@ Diese Funktion unterliegt denselben Transparenzanforderungen wie jede andere Sys
 
 - Jede Beobachtung und jede daraus resultierende Kontrollentscheidung von A00 wird vollständig protokolliert (siehe L2 Grundsatz 6, GUI-Modul PROTOKOLL).
 - Der Admin hat jederzeit uneingeschränkte Einsicht in diese Protokolle — A00 agiert in keinem Fall verdeckt gegenüber dem Admin.
-- Gegenüber anderen Agenten, Kunden und Lizenznehmern bleibt diese Funktion unsichtbar (Black-Box-Prinzip, siehe L1 Grundprinzip 1, L3 Architekturprinzip 3) — die Unsichtbarkeit gilt ausschließlich nach außen, nie gegenüber dem Admin selbst.
+- Gegenüber anderen Agenten, Lizenznehmern und deren Mitarbeitern bleibt diese Funktion unsichtbar (Black-Box-Prinzip, siehe L1 Grundprinzip 1, L3 Architekturprinzip 3) — die Unsichtbarkeit gilt ausschließlich nach außen, nie gegenüber dem Admin selbst.
 - A00 trifft keine strukturellen, strategischen oder freigaberelevanten Entscheidungen eigenständig — auch nicht im Rahmen dieser Überwachungsfunktion (siehe L1 Grundprinzip 9, nicht delegierbare Admin-Letztentscheidung). Erkannte Auffälligkeiten werden zur Admin-Entscheidung eskaliert, nicht autonom durch A00 behoben.
 
 ---
@@ -199,6 +212,7 @@ Jeder Agententyp besitzt pauschale Zugriffsrechte entsprechend seiner Rolle:
 | Führungsagenten | Eigene Abteilung, zugeordnete Prozesse, Koordinationsdaten |
 | Spezialagenten | Eigene Abteilung, zentrale Wissensbasis (lesend) |
 | Unterstützungsagenten | Servicebezogene Bereiche, keine fachlichen Inhalte |
+| Aufsichtsagenten | Eigener Ordner mit vollständigem Datei- und Werkzeugzugriff zur Erfüllung der Überwachungsfunktion; lesend über Protokolle/Aktivitätsdaten aller anderen Agenten |
 
 Zugriffe außerhalb der eigenen Rolle sind nicht zulässig, unabhängig von der Aufgabe.
 
@@ -226,6 +240,7 @@ sein.
 - Bei Provider-/Modellfehlern greift der Retry-/Fallback-Mechanismus in `rufeKIAn()` nachweisbar (Protokoll zeigt Retry bzw. Modellwechsel vor endgültigem Fehlschlag).
 - Jeder Agent greift ausschließlich auf Bereiche innerhalb der für seinen Agententyp definierten Zugriffsrechte zu (kein Zugriff außerhalb der RBAC-Tabelle).
 - Kein Agent speichert Fachwissen dauerhaft außerhalb der zentralen Wissensbasis.
+- A00 als einziger Aufsichtsagent ist eindeutig von den übrigen drei Agententypen unterscheidbar (kein Agent trägt mehr als einen Typ).
 
 ---
 
@@ -264,9 +279,7 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.2 (08.07.2026): Abschnitt "Akzeptanzkriterien" ergänzt (Q7-M-073).
 - v1.3 (09.07.2026): Anschlusspunkt-Ergänzung. Q7-M-033/034 als geschlossen markiert, Verweis auf Q7_Policy_Engine_v1.md unter „Zugriffsrechte (RBAC)" ergänzt. Verweis auf Q7_Wissens_Artefaktmodell_v1.md unter „Erfahrungen" ergänzt.
 - v1.4 (10.07.2026): Agentenmodell-Korrektur nach GF-Entscheidung. Koordinationsfunktion von "Hermes" auf "A01, informell auch Hermes" präzisiert. Neuer Abschnitt "Systemweite Überwachungsfunktion (A00)" ergänzt.
-- v1.5 (25.07.2026): Abschnitt "Standardaufbau eines Agenten" an reale Praxis angepasst (Q7-M-XXX, siehe Mängelliste). `identitaet.md` entfernt (5 statt 6 Dateien). Dateinamen präzisiert: `loops.md` → `loop.md`, `skills.md` → `Skills.md`, jeweils mit Agenten-Präfix `A0X_`. Akzeptanzkriterien entsprechend angepasst (5 statt 6 Dateien).
-
-**Hinweis:** RBAC-Modell (grobe statt feingranulare Rollenklassen) basiert auf einer Annahme — noch nicht durch Admin explizit bestätigt, nur implizit freigegeben. Failover-Annahme (Q7-L6-004) entfällt — siehe „Technische Resilienz".
-
+- v1.5 (25.07.2026): Abschnitt "Standardaufbau eines Agenten" an reale Praxis angepasst (Ticket-ID offen — Nummer war im Quelldokument als Platzhalter "Q7-M-XXX" eingetragen und nie durch eine reale Mängel-ID ersetzt; siehe Backlog-Hinweis Q7-L6-005). `identitaet.md` entfernt (5 statt 6 Dateien). Dateinamen präzisiert: `loops.md` → `loop.md`, `skills.md` → `Skills.md`, jeweils mit Agenten-Präfix `A0X_`. Akzeptanzkriterien entsprechend angepasst (5 statt 6 Dateien).
 - v1.6 (26.07.2026): Terminologie "GF" → "Admin" durchgängig (Q7-L6-001). Standardaufbau-Abschnitt korrigiert: Agenten-Präfix (`A0X_`) vor Dateinamen entfernt, an L4 v1.7 angeglichen — nur Ordnername trägt Agentencode, Dateien einheitlich benannt (Q7-L6-002). „Hermes"-Referenz aktualisiert auf 3-Ebenen-Namenskonvention (L4), Kundensicht-Platzhalter „Persönlicher Assistent" (Q7-L6-003). Q7-L6-004 (Failover/RBAC-Bestätigungsstatus) weiterhin offen — Hinweis unverändert stehen gelassen.
 - v1.7 (26.07.2026): Q7-L6-004 gelöst — Abschnitt "Ausfallsicherheit (Failover)" (Master/Backup-Agenten-Prinzip) vollständig entfernt und durch "Technische Resilienz (statt Agenten-Failover)" ersetzt: Agenten sind statische Definitionsordner ohne Laufzeitzustand, daher kein Agenten-Failover nötig — Resilienz erfolgt technisch über Retry/Modell-Fallback in `rufeKIAn()`, A00 bleibt rein beobachtend/eskalierend. Akzeptanzkriterien entsprechend angepasst. RBAC-Bestätigungsstatus bleibt offen (Admin-Bestätigung noch ausstehend).
+- v1.8 (19.09.2026): Terminologie „Kundensicht" → „Lizenznehmer-Sicht" durchgängig (Q7-L6-006). Neuer vierter Agententyp „Aufsichtsagenten" in die Typologie aufgenommen, A00 als einziger Vertreter dieses Typs ausgewiesen (Q7-L6-007) — schließt die zuvor fehlende Einordnung von A00 in die Agententypologie. RBAC-Tabelle um Zeile „Aufsichtsagenten" ergänzt: eigener Ordner mit vollständigem Datei-/Werkzeugzugriff, lesend über Protokolle/Aktivitätsdaten aller anderen Agenten (Q7-L6-008). Q7-L6-005 (Platzhalter „Q7-M-XXX" in v1.5) explizit als offener Punkt benannt statt stillschweigend stehen gelassen — reale Mängel-ID weiterhin unbekannt.

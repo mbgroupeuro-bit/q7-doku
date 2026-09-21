@@ -1,8 +1,8 @@
 # Q7 – Modell-Zuteilung je Agent (OpenRouter)
 
-**Version:** 1.3
+**Version:** 1.4
 **Status:** Verbindlich
-**Referenziert von:** Q7_Technisches_Architekturhandbuch_v1.1.md (AI Observability), Q7_Lizenz_und_Deployment_v1.1.md (Nutzungsmetriken)
+**Referenziert von:** Q7_Technisches_Architekturhandbuch_v1_2.md (AI Observability), Q7_Lizenz_und_Deployment_v1_2.md (Nutzungsmetriken)
 **Löst:** Offener Punkt „Auf dem Horizont" — Modell-Mapping OpenRouter; final angepasst an echte Codebasis (11.07.2026)
 
 ---
@@ -39,10 +39,10 @@ Anders als in früheren Entwurfsversionen dieses Dokuments vorgeschlagen (dreist
 
 | Stufe | Ort | Zweck |
 |---|---|---|
-| Output-Gate | `app/api/chat/route.ts` | Prüft jede Chat-Antwort vor Auslieferung (siehe Q7_Sicherheitsmodell_v1.5.md, „Standardprüfung") |
+| Output-Gate | `app/api/chat/route.ts` | Prüft jede Chat-Antwort vor Auslieferung (siehe Q7_Sicherheitsmodell_v1_6.md, „Standardprüfung") |
 | Input-Gate | `app/api/compare/route.ts` | Prüft die Nutzereingabe einmalig vor Fan-out an alle Vergleichsmodelle (Admin-Entscheidung 11.07.2026, Option B — Kostenabwägung bei N parallelen Modellaufrufen) |
 
-**Nicht umgesetzt (weiterhin nur konzeptionell, siehe Q7_Sicherheitsmodell_v1.5.md):** Eskalationsprüfung bei bestätigtem Quarantäne-Verdacht, tägliche Reflexionsanalyse. Diese sind fachlich beschrieben, aber nicht Teil der aktuellen Code-Implementierung — falls gewünscht, separat zu beauftragen.
+**Nicht umgesetzt (weiterhin nur konzeptionell, siehe Q7_Sicherheitsmodell_v1_6.md):** Eskalationsprüfung bei bestätigtem Quarantäne-Verdacht, tägliche Reflexionsanalyse. Diese sind fachlich beschrieben, aber nicht Teil der aktuellen Code-Implementierung — falls gewünscht, separat zu beauftragen.
 
 ---
 
@@ -86,3 +86,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.1 (10.07.2026): Agentenkürzel korrigiert (A00–A14 vollständig), weiterhin spekulatives Variablenschema.
 - v1.2 (11.07.2026): Vollständige Korrektur nach Sichtung der echten `app/api/chat/route.ts` und `app/api/compare/route.ts`. Spekulatives `Q7_MODEL_*`-Schema verworfen, ersetzt durch reale `OPENROUTER_MODEL_<KUERZEL>`-Konvention. A14-Modell auf eine gemeinsame Variable für beide real umgesetzten Gate-Stufen reduziert.
 - v1.3 (27.07.2026): Terminologie „GF" → „Admin" durchgängig (Q7-VERT-012). Admin-Entscheidung 11.07.2026 präzisiert. Verweis auf Sicherheitsmodell auf v1.5 aktualisiert.
+- v1.4 (19.09.2026): Interne Querverweise auf reale Dateinamen mit Minor-Version korrigiert (Q7_Sicherheitsmodell_v1_6.md, Q7_Technisches_Architekturhandbuch_v1_2.md, Q7_Lizenz_und_Deployment_v1_2.md), konsistent mit Konsistenz-Check vom 19.09.2026.

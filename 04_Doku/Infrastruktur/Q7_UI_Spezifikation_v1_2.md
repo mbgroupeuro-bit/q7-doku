@@ -1,6 +1,6 @@
 # Q7 – UI-Spezifikation
 
-**Version:** 1.1
+**Version:** 1.2
 **Status:** Verbindlich
 **Referenziert von:** L3_Q7_Architektur (Randschicht/Adapter)
 **Löst:** Q7-M-061, Q7-M-062, Q7-M-063, Q7-M-064
@@ -30,7 +30,7 @@ Direkte Steuerung, Zuweisung oder Konfiguration von Agenten ist ausschließlich 
 
 ## 4. Freigaben und Eskalationen sind Standardfunktionen
 
-Jeder Case, der eine Freigabe oder Eskalation durchläuft (siehe Q7_Workflow_Detailmodell_v1.1.md), zeigt dies im UI als Standardzustand, nicht als Sonderfall.
+Jeder Case, der eine Freigabe oder Eskalation durchläuft (siehe Q7_Workflow_Detailmodell_v1_2.md), zeigt dies im UI als Standardzustand, nicht als Sonderfall.
 
 ---
 
@@ -40,7 +40,7 @@ Ergänzend zum bestehenden GUI-Modell (Inbox → Processing → Output) zeigt di
 
 | Anzeige | Quelle | Beispiel |
 |---|---|---|
-| Status | Case-Zustand (siehe Q7_Workflow_Detailmodell_v1.1.md) | „In Bearbeitung", „Wartet auf Freigabe" |
+| Status | Case-Zustand (siehe Q7_Workflow_Detailmodell_v1_2.md) | „In Bearbeitung", „Wartet auf Freigabe" |
 | Review-Hinweis | Human-in-the-Loop-Entscheidung (Policy Engine) | „Wird fachlich geprüft" (ohne Nennung des prüfenden Agenten) |
 | Verantwortlichkeit | Rolle, nicht Agentenname | „In Bearbeitung durch Fachabteilung", „Wartet auf Freigabe durch Admin" |
 
@@ -64,7 +64,7 @@ Q7-Plattform
       └── Systemkonfiguration
 ```
 
-Zugriff auf die Admin-Konsole unterliegt derselben Policy-Prüfung wie jeder andere kritische Zugriff (siehe Q7_Policy_Engine_v1.2.md). Die Trennung ist in dieser Version rollenbasiert innerhalb derselben Anwendung; eine physische Trennung (eigene Anwendung/Domain) ist als spätere Ausbaustufe vorgesehen (V3), sobald Kapazität dafür freigegeben wird.
+Zugriff auf die Admin-Konsole unterliegt derselben Policy-Prüfung wie jeder andere kritische Zugriff (siehe Q7_Policy_Engine_v1_3.md). Die Trennung ist in dieser Version rollenbasiert innerhalb derselben Anwendung; eine physische Trennung (eigene Anwendung/Domain) ist als spätere Ausbaustufe vorgesehen (V3), sobald Kapazität dafür freigegeben wird.
 
 ---
 
@@ -82,7 +82,7 @@ Diese Anpassung ist bei der Anbindung des Frontends an die Q7-Bridge umzusetzen,
 
 # Freigaben und Eskalationen im UI
 
-Jeder Case, der den Zustand „Zur Freigabe vorgelegt" oder „Abgebrochen" (mit Eskalation) erreicht (siehe Q7_Workflow_Detailmodell_v1.1.md), zeigt in der jeweils berechtigten Ansicht:
+Jeder Case, der den Zustand „Zur Freigabe vorgelegt" oder „Abgebrochen" (mit Eskalation) erreicht (siehe Q7_Workflow_Detailmodell_v1_2.md), zeigt in der jeweils berechtigten Ansicht:
 
 - **Kunden-UI:** neutraler Status („Wartet auf Freigabe", „In Klärung") ohne Eskalationsdetails.
 - **Admin-Konsole / Admin-Ansicht:** vollständige Freigabe-Warteschlange mit allen zur Entscheidung nötigen Informationen; vollständige Eskalationsdetails (Ursache, Frist, eskalierte Instanz).
@@ -94,7 +94,7 @@ Freigabe- und Eskalationsanzeige sind keine optionalen UI-Elemente, sondern verp
 # Akzeptanzkriterien
 
 - Kein Kunden-UI-Screen zeigt einen internen Agentencode oder Agentennamen (Testfall: vollständige Durchsicht aller Kunden-sichtbaren Screens).
-- Jeder Case-Status in der Kunden-UI ist eindeutig aus dem Case-Zustandsmodell (Q7_Workflow_Detailmodell_v1.1.md) ableitbar — keine frei erfundenen UI-Zustände.
+- Jeder Case-Status in der Kunden-UI ist eindeutig aus dem Case-Zustandsmodell (Q7_Workflow_Detailmodell_v1_2.md) ableitbar — keine frei erfundenen UI-Zustände.
 - Zugriff auf die Admin-Konsole ist für keine Kunden-Rolle möglich, unabhängig von Navigationspfad oder direkter URL.
 - Jeder Case im Zustand „Zur Freigabe vorgelegt" ist in der berechtigten Ansicht (Admin) sichtbar, ohne manuelle Suche.
 - Die „Agenten"-Seite des bestehenden Frontends ist nachweislich nicht für Kunden-Rollen erreichbar.
@@ -104,7 +104,7 @@ Freigabe- und Eskalationsanzeige sind keine optionalen UI-Elemente, sondern verp
 # Geltungsbereich
 
 Dieses Dokument definiert ausschließlich die UI-Spezifikation (Kunden-UI, Admin-Trennung, Zustandsanzeige).
-Es vertieft L3 (Randschicht/Adapter) und verweist auf Q7_Workflow_Detailmodell_v1.1.md (Case-Zustände) und Q7_Policy_Engine_v1.2.md (Zugriffskontrolle Admin-Konsole).
+Es vertieft L3 (Randschicht/Adapter) und verweist auf Q7_Workflow_Detailmodell_v1_2.md (Case-Zustände) und Q7_Policy_Engine_v1_3.md (Zugriffskontrolle Admin-Konsole).
 Es ersetzt keine Inhalte dieser Dokumente und dupliziert sie nicht (SSOT, siehe L2 Dokumentenregeln).
 
 ---
@@ -121,3 +121,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 **Änderungsprotokoll:**
 - v1.0 (09.07.2026): Ausgangsfassung. Löst Q7-M-061–064.
 - v1.1 (27.07.2026): Terminologie „GF"/„Geschäftsführung" → „Admin" durchgängig (Q7-VERT-009). Verweis auf Workflow-Detailmodell auf v1.1 aktualisiert. Verantwortlichkeitsanzeige „Geschäftsführung" → „Admin".
+- v1.2 (19.09.2026): „Kunden-UI"/„Kunden-Rolle"/„Kundenfunktion" bewusst unverändert gelassen (Admin-Entscheidung, siehe Konsistenz-Check vom 19.09.2026) — diese Begriffe bezeichnen die Nutzeroberfläche/Zugriffsart, nicht den Lizenznehmer als Entität. Interne Querverweise auf reale Dateinamen mit Minor-Version korrigiert (Q7_Workflow_Detailmodell_v1_2.md, Q7_Policy_Engine_v1_3.md).

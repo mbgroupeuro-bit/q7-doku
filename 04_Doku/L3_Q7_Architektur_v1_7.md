@@ -1,6 +1,6 @@
 # Q7 – Architektur
 
-**Version:** 1.6
+**Version:** 1.7
 **Status:** Verbindlich
 
 ---
@@ -74,8 +74,8 @@ Die Code-ROOT greift lesend/schreibend auf die Dokumentations-ROOT zu, ersetzt s
 
 ## Randschicht (Adapter)
 
-- Benutzeroberfläche (UI) — reine Schnittstelle nach außen, keine Geschäftslogik (siehe Q7-M-009, L8 Frontend-Prinzip)
-- Vertiefung (konkrete UI-Spezifikation, Kunden-UI/Admin-Trennung, Zustandsanzeige): `04_Doku/Infrastruktur/Q7_UI_Spezifikation_v1.md`
+- Benutzeroberfläche (UI) — reine Schnittstelle nach außen, keine Geschäftslogik (siehe Q7-M-009, L8 Abschnitt „Frontend")
+- Vertiefung (konkrete UI-Spezifikation, Lizenznehmer-UI/Admin-Trennung, Zustandsanzeige): `04_Doku/Infrastruktur/Q7_UI_Spezifikation_v1.md`
 
 Jede Komponente wird im entsprechenden L-Dokument beschrieben.
 
@@ -147,3 +147,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.4 (10.07.2026): Korrektur nach realer Bestandsaufnahme (10.07.2026). Neues Architekturprinzip 7 "Trennung von Dokumentations-/Daten-ROOT und Code-ROOT" ergänzt — vorherige Annahme, beide ROOTs seien identisch (q7-app), war falsch. Ablagestruktur-Referenzpfad korrigiert auf `04_Doku/Q7_Ablagestruktur_v0.4.md` (reale Schreibweise "04_Doku", nicht "04_Doku"). Akzeptanzkriterium zur Pfad-Realitätsprüfung ergänzt.
 - v1.5 (26.07.2026): Terminologie "GF" → "Admin" in Änderungsregel (Q7-L3-001). Widersprüchlichen Schreibweise-Hinweis ("04_Doku ... nicht 04_Doku") entfernt, obsolet (Q7-L3-002). **Offen (Q7-L3-003): Root-Struktur und Ablagestruktur-Referenzpfad im Dokument entsprechen nicht dem Stand nach Cleanup 25.07.2026 (`D:\Projekt2027\Q7_Entwicklung\`, `a_Q7-code`/`b_Q7-doku`/`c_Q7_datenbank`) — Korrektur noch ausstehend, Admin-Antwort erforderlich.**
 - v1.6 (26.07.2026): Q7-L3-003 gelöst — Ablagestruktur-Referenzpfad korrigiert auf `04_Doku/Q7_Ablagestruktur_v0_6.md` (Neufassung nach Root-Umzug, reale Bestandsaufnahme 26.07.2026). Akzeptanzkriterium zur Pfad-Realitätsprüfung auf Bestandsaufnahmedatum 26.07.2026 aktualisiert.
+- v1.7 (19.09.2026): Verweis in Abschnitt "Randschicht (Adapter)" korrigiert von "L8 Frontend-Prinzip" (nicht-existente Überschrift) auf "L8 Abschnitt „Frontend"" (Q7-L3-004). "Kunden-UI" → "Lizenznehmer-UI" in Vertiefungsverweis (Q7-L3-005).

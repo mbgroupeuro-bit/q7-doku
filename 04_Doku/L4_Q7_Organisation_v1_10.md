@@ -1,6 +1,6 @@
-﻿# Q7 – Organisationsmodell
+# Q7 – Organisationsmodell
 
-**Version:** 1.8
+**Version:** 1.10
 **Status:** Verbindlich
 
 ---
@@ -64,6 +64,8 @@ Die Geschäftsführung (Admin) besitzt eine eigene organisatorische Einheit, str
 
 Diese Einheit bildet die in L1 Grundprinzip 9 und L2 Grundsatz 8 verankerte Letztentscheidungsbefugnis operativ ab: Eingehende Vorgänge, die eine Admin-Freigabe benötigen (siehe L5 Standardprozess, Schritt „Freigabe"), durchlaufen diese Pipeline. Die Admin-Einheit ist kein Agent und unterliegt nicht dem Agentenmodell (L6), da die Letztentscheidung laut L1 nicht delegierbar ist.
 
+Zum Rollenverhältnis Lizenznehmer/Admin/User siehe L1, Abschnitt „Rollenmodell": der Admin ist ein vom Lizenznehmer benannter Mitarbeiter mit Entscheidungsbefugnis; weitere Mitarbeiter ohne diese Befugnis sind User.
+
 ---
 
 # Namenskonvention (3-Ebenen-Modell)
@@ -73,16 +75,16 @@ Jeder Agent besitzt drei unabhängige Bezeichnungsebenen, die nicht vermischt we
 | Ebene | Bedeutung | Beispiel (A01) | Sichtbar für |
 |---|---|---|---|
 | 1 – Ordner-ID | Technische Struktur, physischer Ordnername | `A01_Planung_Vorbereitung` | System, Doku-Referenzen |
-| 2 – Interne Fachbezeichnung | Abteilungsname im Unternehmensmodell | „A01 – Planung & Vorbereitung" | Admin, interne Architektur-/Prozessdoku (L4–L6) |
-| 3 – Kundensicht (Black-Box) | Sichtbarer Name im Frontend des Lizenznehmers | „Persönlicher Assistent" (Platzhalter, Markenname offen) | Ausschließlich Lizenznehmer-UI |
+| 2 – Interne Fachbezeichnung | Abteilungsname im Unternehmensmodell | „A01 – Planung & Vorbereitung" | Admin, interne Architektur-/Prozessdoku (L4–L6, L8) |
+| 3 – Lizenznehmer-Sicht (Black-Box) | Sichtbarer Name im Frontend des Lizenznehmers | „Persönlicher Assistent" (Platzhalter, Markenname offen) | Ausschließlich Lizenznehmer-UI |
 
-Regel: Ebene-3-Namen dürfen nicht in internen Architektur- oder Prozessdokumenten (L1–L8) verwendet werden und umgekehrt — Ebene-1/2-Bezeichnungen (Agentencode, Abteilungsname) dürfen dem Lizenznehmer nie angezeigt werden (siehe Black-Box-Prinzip, L3 Architekturprinzip 3, Master v1.2 Model-Visibility-Ausnahme).
+Regel: Ebene-3-Namen dürfen nicht in internen Architektur- oder Prozessdokumenten (L1–L8) verwendet werden und umgekehrt — Ebene-1/2-Bezeichnungen (Agentencode, Abteilungsname) dürfen dem Lizenznehmer nie angezeigt werden (siehe Black-Box-Prinzip, L3 Architekturprinzip 3, Master, Abschnitt „Abweichung von Grundprinzip 7 (KI bleibt unsichtbar)").
 
 ---
 
 # Koordinationsebene
 
-Zwischen Geschäftsführung und den Fachabteilungen besteht eine zentrale Koordinationsfunktion (A01, Funktionsbezeichnung „Planung & Vorbereitung"). Kundenseitig (Ebene 3, Black-Box) wird A01 aktuell als „Persönlicher Assistent" geführt — Platzhalter bis zur Markenname-Entscheidung (Marketing, siehe Namenskonvention unten).
+Zwischen Geschäftsführung und den Fachabteilungen besteht eine zentrale Koordinationsfunktion (A01, Funktionsbezeichnung „Planung & Vorbereitung"). In Lizenznehmer-Sicht (Ebene 3, Black-Box) wird A01 aktuell als „Persönlicher Assistent" geführt — Platzhalter bis zur Markenname-Entscheidung (Marketing, siehe Namenskonvention unten).
 Sie plant, verteilt und überwacht alle Aufträge, bevor Fachabteilungen Zugriff erhalten.
 
 ```text
@@ -103,10 +105,10 @@ Geschäftsführung (00_Admin)
 │     ├── A12 – Zukunftsforschung
 │     └── A13 – Personal
 │
-└── A00 – Stab (direkte Admin-Unterstützung, außerhalb der A01-Koordination; zusätzlich systemweite Überwachungsfunktion, siehe L6 „Systemweite Überwachungsfunktion (A00)")
+└── A00 – Stab (direkte Admin-Unterstützung, außerhalb der A01-Koordination; zusätzlich systemweite Überwachungsfunktion als Aufsichtsagent, siehe L6 „Aufsichtsagenten" und „Systemweite Überwachungsfunktion (A00)")
 ```
 
-A14 (Sicherheit) steht als cross-funktionale Durchsetzungsebene außerhalb dieser Hierarchie (SEC-GATE, siehe Master Grundprinzip 6 und Entscheidungsregel 9 — inhaltliche SEC-GATE-Definition steht noch aus, siehe Arbeitsliste FS-07-Folgepunkt).
+A14 (Sicherheit) steht als cross-funktionale Durchsetzungsebene außerhalb dieser Hierarchie (SEC-GATE, siehe Master Grundprinzip 6 und Entscheidungsregel 9 — inhaltliche SEC-GATE-Definition siehe `SEC-GATE_Definition_v1.0.md`).
 
 Kein Auftrag erreicht eine Fachabteilung ohne vorherige Koordination durch A01.
 Ablaufdetails → L5 Prozessmodell.
@@ -161,7 +163,7 @@ Lizenznehmer aktivieren Abteilungen entsprechend ihrer Edition und ihres Bedarfs
 (siehe Q7-M-065 Licensing Service, Q7-M-066 Feature Flags/Entitlement, Q7-M-071 Editionen).
 Nicht gebuchte Abteilungen sind inaktiv, aber strukturell vordefiniert und jederzeit aktivierbar.
 
-Vertiefung (Mandantenstruktur, Isolationsgrade, Datenräume): `04_Doku/Infrastruktur/Q7_Tenant_Modell_v1.md`
+Vertiefung (Lizenznehmerstruktur, Isolationsgrade, Datenräume): `04_Doku/Infrastruktur/Q7_Tenant_Modell_v1.md`
 Vertiefung (Licensing Service, Feature-Flag-System, Editionen, IP-Schichten): `04_Doku/Infrastruktur/Q7_Lizenz_und_Deployment_v1.md`
 
 ---
@@ -261,3 +263,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.7 (26.07.2026): Neuer Abschnitt "Namenskonvention (3-Ebenen-Modell)" ergänzt — trennt Ordner-ID, interne Fachbezeichnung und Kundensicht(Black-Box)-Name je Agent. "Hermes"-Referenz in Koordinationsebene korrigiert (Missverständnis aufgelöst: kein Produktname, sondern Verwechslung mit "Harness Agent"); Kundensicht-Platzhalter jetzt "Persönlicher Assistent". Verweis auf Q7_KLAERUNGSBEDARF_Agentenmodell.md entfernt (Klärung abgeschlossen).
 - v1.8 (26.07.2026): Referenz auf L6-Abschnitt "Ausfallsicherheit (Failover)" korrigiert auf "Technische Resilienz (statt Agenten-Failover)" (Q7-L6-004: Backup-Agenten-Konzept in L6 durch technische Resilienz in `rufeKIAn()` ersetzt).
 - v1.9 (15.09.2026): FS-07 - Kaputter Verweis 'siehe L6, SEC-GATE' korrigiert auf tatsaechliche Fundstellen in Master (Grundprinzip 6, Entscheidungsregel 9). Festgestellt: SEC-GATE wird in L1/L2/L6/Master an keiner Stelle inhaltlich definiert, nur erwaehnt - separater Backlog-Punkt angelegt.
+- v1.10 (19.09.2026): Terminologie "Kunde"/"Kundensicht"/"Kundenseitig" → "Lizenznehmer"/"Lizenznehmer-Sicht"/"Lizenznehmerseitig" durchgängig (Q7-L4-004). SEC-GATE-Verweis aktualisiert: inhaltliche Definition liegt nun in `SEC-GATE_Definition_v1.0.md` vor, Backlog-Punkt aus v1.9 damit erledigt (Q7-L4-005). Neuer Verweis auf L1 „Rollenmodell" in Abschnitt „Admin-Einheit" ergänzt (Q7-L4-006). Namenskonvention-Tabelle: Sichtbarkeit Ebene 2 von „L4–L6" auf „L4–L6, L8" erweitert, da L8 (Q7-M-078) denselben Bezeichner technisch referenziert (Q7-L4-007). Verweis „Master v1.2 Model-Visibility-Ausnahme" korrigiert auf „Master, Abschnitt „Abweichung von Grundprinzip 7 (KI bleibt unsichtbar)"" (Q7-L4-008). A00-Verweis um neuen Agententyp „Aufsichtsagent" ergänzt, konsistent mit L6 v1.8 (Q7-L4-009).

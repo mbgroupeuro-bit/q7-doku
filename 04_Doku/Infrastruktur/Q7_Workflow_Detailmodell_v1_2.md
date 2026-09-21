@@ -1,6 +1,6 @@
 # Q7 – Workflow-Detailmodell
 
-**Version:** 1.1
+**Version:** 1.2
 **Status:** Verbindlich
 **Referenziert von:** L5_Q7_Prozessmodell (Standardprozess)
 **Löst:** Q7-M-008, Q7-M-023, Q7-M-024, Q7-M-025, Q7-M-026, Q7-M-027, Q7-M-028
@@ -34,7 +34,7 @@ Jeder Zustand besitzt einen definierten Fehlerpfad. Ein Case bleibt nie in einem
 
 ## 5. Human-in-the-Loop ist risikobasiert, nicht pauschal
 
-Ob und an welcher Stelle ein Case eine menschliche Prüfung durchläuft, ergibt sich aus der Policy Engine (siehe Q7_Policy_Engine_v1.2.md), nicht aus einer festen Regel pro Prozesstyp.
+Ob und an welcher Stelle ein Case eine menschliche Prüfung durchläuft, ergibt sich aus der Policy Engine (siehe Q7_Policy_Engine_v1_3.md), nicht aus einer festen Regel pro Prozesstyp.
 
 ---
 
@@ -44,7 +44,7 @@ Jeder Case besteht mindestens aus:
 
 - Case-ID
 - Prozess-ID (Referenz auf P_xxx, siehe L5)
-- Mandant/Tenant-ID (siehe Q7_Tenant_Modell_v1.md)
+- Lizenznehmer/Tenant-ID (siehe Q7_Tenant_Modell_v1_2.md)
 - aktueller Zustand
 - Zustandshistorie (jeder Übergang mit Zeitstempel, auslösendem Agenten/Ereignis)
 - Priorität
@@ -101,11 +101,11 @@ Eskalationsfristen und -instanzen je Prozesstyp werden weiterhin in der jeweilig
 
 # Human-in-the-Loop
 
-Die Entscheidung, ob ein Case an einer bestimmten Zustandsgrenze eine menschliche Prüfung erfordert, wird zur Laufzeit von der Policy Engine getroffen (siehe Q7_Policy_Engine_v1.2.md, Kritikalitätsprüfung), auf Basis von:
+Die Entscheidung, ob ein Case an einer bestimmten Zustandsgrenze eine menschliche Prüfung erfordert, wird zur Laufzeit von der Policy Engine getroffen (siehe Q7_Policy_Engine_v1_3.md, Kritikalitätsprüfung), auf Basis von:
 
 - Kritikalitätsstufe des Prozesses (P_xxx-Definition)
 - Datenklasse/Sensibilität des Falls
-- Mandantenkonfiguration (siehe Q7_Tenant_Modell_v1.md)
+- Lizenznehmerkonfiguration (siehe Q7_Tenant_Modell_v1_2.md)
 
 Die finale Freigabe bleibt in jedem Fall beim Admin (siehe L1 Grundprinzip 9); Human-in-the-Loop-Regeln bestimmen ausschließlich, ob und welche vorgelagerte Fachprüfung vor der Admin-Freigabe verpflichtend ist.
 
@@ -135,7 +135,7 @@ Wird eine P_xxx-Definition geändert, während Cases dieses Prozesstyps aktiv si
 # Geltungsbereich
 
 Dieses Dokument definiert ausschließlich das ausführbare Detailmodell (Case, Zustände, Fehlerpfade, Migration).
-Es vertieft L5 (Prozessmodell) und verweist auf Q7_Policy_Engine_v1.2.md (Human-in-the-Loop-Entscheidung) und Q7_Tenant_Modell_v1.md (Mandantenbezug).
+Es vertieft L5 (Prozessmodell) und verweist auf Q7_Policy_Engine_v1_3.md (Human-in-the-Loop-Entscheidung) und Q7_Tenant_Modell_v1_2.md (Lizenznehmerbezug).
 Technische Implementierung der Workflow-Ausführung → L8.
 Es ersetzt keine Inhalte dieser Dokumente und dupliziert sie nicht (SSOT, siehe L2 Dokumentenregeln).
 
@@ -153,3 +153,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 **Änderungsprotokoll:**
 - v1.0 (09.07.2026): Ausgangsfassung. Löst Q7-M-008, Q7-M-023–028.
 - v1.1 (27.07.2026): Terminologie „GF" → „Admin" durchgängig (Q7-VERT-003). Zustandsname „Hermes-Koordination" → „A01-Koordination" (Q7-VERT-004), konsistent mit L5 v1.4 und L4 v1.8 (3-Ebenen-Namenskonvention). Verweise auf Policy Engine auf v1.2 aktualisiert.
+- v1.2 (19.09.2026): „Mandant/Tenant-ID" → „Lizenznehmer/Tenant-ID", „Mandantenkonfiguration" → „Lizenznehmerkonfiguration" (Q7-VERT2-009; „Tenant" als technischer ID-Begriff bewusst unverändert). Interne Querverweise auf reale Dateinamen mit Minor-Version korrigiert (Q7_Policy_Engine_v1_3.md, Q7_Tenant_Modell_v1_2.md).
