@@ -1,6 +1,6 @@
 # Q7 – Prozessmodell
 
-**Version:** 1.4
+**Version:** 1.5
 **Status:** Verbindlich
 
 ---
@@ -76,7 +76,7 @@ Output
 Freigabe kann durch vorgelagerte Fachprüfung vorbereitet werden.
 Die finale Entscheidung liegt immer beim Admin.
 
-Ausführbares Detailmodell (Zustände, Case-Verwaltung, Fehlerpfade, Human-in-the-Loop, Prozessversionen bei laufenden Cases): `04_Doku/Infrastruktur/Q7_Workflow_Detailmodell_v1.md`
+Ausführbares Detailmodell (Zustände, Case-Verwaltung, Fehlerpfade, Human-in-the-Loop, Prozessversionen bei laufenden Cases): `04_Doku/Infrastruktur/Q7_Workflow_Detailmodell_v1_2.md`
 
 ---
 
@@ -166,7 +166,7 @@ Welche Prozesse als kritisch gelten, wird je Prozess in der jeweiligen P_xxx-Def
 Fehlerhafte oder abgebrochene Prozesse werden eskaliert (siehe Prozessstatus „Abgebrochen").
 Eskalationsregeln (Instanzen, Fristen) werden je Prozess in der jeweiligen P_xxx-Definition festgelegt (siehe Q7-M-026).
 
-**Geschlossen (Q7-M-008):** Das Detailmodell zum Datenfluss, ergänzend zum linearen High-Level-Standardprozess hier, ist als eigenes Dokument angelegt: `04_Doku/Infrastruktur/Q7_Workflow_Detailmodell_v1.md`. Es definiert die maschinenlesbare State Machine, das Case-Modell und die generischen Fehler-/Eskalationsmechanismen.
+**Geschlossen (Q7-M-008):** Das Detailmodell zum Datenfluss, ergänzend zum linearen High-Level-Standardprozess hier, ist als eigenes Dokument angelegt: `04_Doku/Infrastruktur/Q7_Workflow_Detailmodell_v1_2.md`. Es definiert die maschinenlesbare State Machine, das Case-Modell und die generischen Fehler-/Eskalationsmechanismen.
 
 ---
 
@@ -200,7 +200,7 @@ Beispiele:
 - Abgeschlossen
 - Abgebrochen
 
-Vollständige State Machine mit allen Übergängen: siehe Q7_Workflow_Detailmodell_v1.md, Abschnitt „Zustandsmodell".
+Vollständige State Machine mit allen Übergängen: siehe Q7_Workflow_Detailmodell_v1_2.md, Abschnitt „Zustandsmodell".
 
 ---
 
@@ -261,3 +261,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.2 (08.07.2026): Abschnitt "Akzeptanzkriterien" ergänzt (Q7-M-073).
 - v1.3 (09.07.2026): Anschlusspunkt-Ergänzung. Q7-M-008 als geschlossen markiert, Verweis auf Q7_Workflow_Detailmodell_v1.md ergänzt (Abschnitte „Standardprozess", „Fehler & Eskalation", „Prozessstatus"). Fußzeile „Offene Anschlusspunkte für L6" entfernt — beide dort genannten Punkte sind seit L6 v1.1/1.2 bereits umgesetzt, Hinweis war veraltet.
 - v1.4 (26.07.2026): Terminologie "GF" → "Admin" (Q7-L5-001). "Hermes-Koordination" → "A01-Koordination (Planung & Vorbereitung)" — Klarstellung 3-Ebenen-Modell: A01 = interne Architektur-/Prozessbezeichnung (Ebene 1/2), Kundensicht-Name (Ebene 3, aktuell Platzhalter "Persönlicher Assistent") gehört nicht in interne Prozessdokumente (Q7-L5-002).
+- v1.5 (21.09.2026): Querverweise korrigiert (2×): `Q7_Workflow_Detailmodell_v1.md` → `Q7_Workflow_Detailmodell_v1_2.md` (Q7-L5-003). Dokument war beim layerweiten Konsistenz-Check vom 19.09.2026 übersprungen worden — mit dieser Version nachgezogen.

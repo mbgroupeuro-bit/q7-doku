@@ -1,6 +1,6 @@
 # Q7 – Technisches Modell
 
-**Version:** 1.7
+**Version:** 1.8
 **Status:** Verbindlich
 
 ---
@@ -26,7 +26,7 @@ Jedes Modul besitzt eine klar definierte Aufgabe.
 Neue Module können ergänzt werden, ohne bestehende Module grundlegend zu verändern.
 
 Konkrete Infrastruktur-Umsetzung (Repository, CI/CD, Hosting) wird in `04_Doku/Infrastruktur/` dokumentiert und muss den hier definierten Prinzipien entsprechen.
-Konkrete technische Zielarchitektur (Datenarchitektur, Integrationsarchitektur, Deployment-Modi, Resilienz, AI Observability, Restore-Strategie): `04_Doku/Infrastruktur/Q7_Technisches_Architekturhandbuch_v1.md`.
+Konkrete technische Zielarchitektur (Datenarchitektur, Integrationsarchitektur, Deployment-Modi, Resilienz, AI Observability, Restore-Strategie): `04_Doku/Infrastruktur/Q7_Technisches_Architekturhandbuch_v1_2.md`.
 
 ---
 
@@ -40,7 +40,7 @@ Q7 muss für kleine Unternehmen ebenso geeignet sein wie für internationale Kon
 
 Alle technischen Komponenten müssen den Schutz der Systemarchitektur und der Unternehmensdaten gewährleisten.
 
-Vertiefung (Tool-Sandboxing, Prompt-Injection-Abwehr, Instruktions-/Datentrennung, IP-Schutz, Secret-Management, DLP): `04_Doku/Infrastruktur/Q7_Sicherheitsmodell_v1_4.md`.
+Vertiefung (Tool-Sandboxing, Prompt-Injection-Abwehr, Instruktions-/Datentrennung, IP-Schutz, Secret-Management, DLP): `04_Doku/Infrastruktur/Q7_Sicherheitsmodell_v1_6.md`.
 
 ---
 
@@ -180,8 +180,8 @@ Das System unterstützt mindestens:
 
 Zum Rollenverhältnis siehe L1, Abschnitt „Rollenmodell".
 
-Vertiefung (Lizenznehmerstruktur, Isolationsgrade, Datenräume): `04_Doku/Infrastruktur/Q7_Tenant_Modell_v1.md`.
-Vertiefung (Lizenzmodell, Feature Flags, IP-Schichten, Update-/Rollback-Modell): `04_Doku/Infrastruktur/Q7_Lizenz_und_Deployment_v1.md`.
+Vertiefung (Lizenznehmerstruktur, Isolationsgrade, Datenräume): `04_Doku/Infrastruktur/Q7_Tenant_Modell_v1_2.md`.
+Vertiefung (Lizenzmodell, Feature Flags, IP-Schichten, Update-/Rollback-Modell): `04_Doku/Infrastruktur/Q7_Lizenz_und_Deployment_v1_2.md`.
 
 ---
 
@@ -243,6 +243,8 @@ Wissen wird in L7 beschrieben.
 
 **Mängelregister — nicht mehr aktiv geführt (19.09.2026):** Das Mängelregister (`Q7_Maengel_Loesungsvorschlaege_vX.md`) wurde geführt, solange offene Mängel bestanden; nachdem alle Mängel behoben waren, wurde die Datei gelöscht statt archiviert. Der Abschnitt bleibt hier zur Erklärung des historischen Ablageorts erhalten (vormals `04_Doku/Infrastruktur/`, nicht in L2 Governance integriert). Traceability zwischen Mangel-ID, Lösungsdokument und Akzeptanzkriterium wurde geführt in: `04_Doku/Infrastruktur/Q7_Test_und_Traceability_v1_2.md`, Abschnitt „Traceability Matrix" — dort ebenfalls als abgeschlossen vermerkt.
 
+**Korrektur (21.09.2026):** Die Aussage oben, das Mängelregister sei gelöscht worden, wurde bei der Dateihygiene-Prüfung vom 21.09.2026 widerlegt — `Q7_Maengel_Loesungsvorschlaege_v1_5....md` existiert real im Infrastruktur-Ordner (Stand 27.07.2026). Dieser Abschnitt und der entsprechende Abschnitt in `Q7_Test_und_Traceability_v1_2.md` müssen inhaltlich korrigiert werden — noch nicht in dieser Version umgesetzt, da die Datei selbst noch nicht neu geprüft wurde.
+
 ---
 
 # Änderungsregel
@@ -263,3 +265,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.5 (15.09.2026): (übersprungen in Quelldokument — Versionssprung direkt auf v1.6 im Rahmen des Konsistenz-Checks vom 19.09.2026, siehe unten.)
 - v1.6 (19.09.2026): Terminologie "Mandant"/"Mandanten-" → "Lizenznehmer"/"Lizenznehmer-" in Prosa (Abschnitt „Datenhaltung"); reale Ordnerpfade (`01_Mandanten_Datenbank`) bewusst nicht mit umbenannt, als offener technischer Punkt markiert (Q7-L8-007). Abschnitt "Benutzerverwaltung" um Rollenmodell (Lizenznehmer/Admin/User, siehe L1) präzisiert. Neuer offener Punkt (Q7-L8-006) zur technischen Umsetzung der Modellname-Sichtbarkeit in der Backend-Response ergänzt (siehe Master, Abweichung Grundprinzip 7) — Umsetzung bewusst zurückgestellt, bis das System grundlegend steht.
 - v1.7 (19.09.2026): Abschnitt „M-ID-Register" aktualisiert (Q7-VERT2-007 abschließend geklärt): Mängelregister wurde gelöscht, nachdem alle Mängel behoben waren — kein offener/kaputter Verweis mehr, sondern dokumentierter historischer Zustand.
+- v1.8 (21.09.2026): Querverweise korrigiert (Q7-L8-008): `Q7_Technisches_Architekturhandbuch_v1.md` → `..._v1_2.md`; `Q7_Sicherheitsmodell_v1_4.md` → `..._v1_6.md`; `Q7_Tenant_Modell_v1.md` (2×) → `..._v1_2.md`; `Q7_Lizenz_und_Deployment_v1.md` → `..._v1_2.md`. Abschnitt „M-ID-Register" um Korrekturhinweis ergänzt (Q7-L8-009): die in v1.7 als geklärt vermerkte Löschung des Mängelregisters wurde bei der Dateihygiene-Prüfung vom 21.09.2026 widerlegt — Datei existiert real, inhaltliche Neubewertung von Abschnitt und Q7_Test_und_Traceability_v1_2.md noch ausstehend.

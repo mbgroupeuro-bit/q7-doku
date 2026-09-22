@@ -1,6 +1,6 @@
 # Q7 – Agentenmodell
 
-**Version:** 1.8
+**Version:** 1.9
 **Status:** Verbindlich
 
 ---
@@ -118,7 +118,7 @@ Erfahrungen entstehen durch Loops.
 Sie dienen der kontinuierlichen Verbesserung des Agenten.
 Erfahrungen ersetzen niemals die zentrale Wissensbasis.
 
-Vertiefung (Erfahrung als eigenständige Artefaktklasse mit Confidence-Wert, Übernahme zu Knowledge nach Freigabe): `04_Doku/Infrastruktur/Q7_Wissens_Artefaktmodell_v1.md`
+Vertiefung (Erfahrung als eigenständige Artefaktklasse mit Confidence-Wert, Übernahme zu Knowledge nach Freigabe): `04_Doku/Infrastruktur/Q7_Wissens_Artefaktmodell_v1_2.md`
 
 ---
 
@@ -216,7 +216,7 @@ Jeder Agententyp besitzt pauschale Zugriffsrechte entsprechend seiner Rolle:
 
 Zugriffe außerhalb der eigenen Rolle sind nicht zulässig, unabhängig von der Aufgabe.
 
-**Geschlossen (Q7-M-033/034):** Die attributbasierte Erweiterung dieser pauschalen Rollenlogik (ABAC — Zugriff abhängig von Lizenznehmer, Datenklasse oder Prozessstatus) ist spezifiziert in: `04_Doku/Infrastruktur/Q7_Policy_Engine_v1.md`. RBAC (diese Tabelle) bleibt die Basis; ABAC verfeinert, hebt sie aber nie auf.
+**Geschlossen (Q7-M-033/034):** Die attributbasierte Erweiterung dieser pauschalen Rollenlogik (ABAC — Zugriff abhängig von Lizenznehmer, Datenklasse oder Prozessstatus) ist spezifiziert in: `04_Doku/Infrastruktur/Q7_Policy_Engine_v1_3.md`. RBAC (diese Tabelle) bleibt die Basis; ABAC verfeinert, hebt sie aber nie auf.
 
 ---
 
@@ -283,3 +283,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.6 (26.07.2026): Terminologie "GF" → "Admin" durchgängig (Q7-L6-001). Standardaufbau-Abschnitt korrigiert: Agenten-Präfix (`A0X_`) vor Dateinamen entfernt, an L4 v1.7 angeglichen — nur Ordnername trägt Agentencode, Dateien einheitlich benannt (Q7-L6-002). „Hermes"-Referenz aktualisiert auf 3-Ebenen-Namenskonvention (L4), Kundensicht-Platzhalter „Persönlicher Assistent" (Q7-L6-003). Q7-L6-004 (Failover/RBAC-Bestätigungsstatus) weiterhin offen — Hinweis unverändert stehen gelassen.
 - v1.7 (26.07.2026): Q7-L6-004 gelöst — Abschnitt "Ausfallsicherheit (Failover)" (Master/Backup-Agenten-Prinzip) vollständig entfernt und durch "Technische Resilienz (statt Agenten-Failover)" ersetzt: Agenten sind statische Definitionsordner ohne Laufzeitzustand, daher kein Agenten-Failover nötig — Resilienz erfolgt technisch über Retry/Modell-Fallback in `rufeKIAn()`, A00 bleibt rein beobachtend/eskalierend. Akzeptanzkriterien entsprechend angepasst. RBAC-Bestätigungsstatus bleibt offen (Admin-Bestätigung noch ausstehend).
 - v1.8 (19.09.2026): Terminologie „Kundensicht" → „Lizenznehmer-Sicht" durchgängig (Q7-L6-006). Neuer vierter Agententyp „Aufsichtsagenten" in die Typologie aufgenommen, A00 als einziger Vertreter dieses Typs ausgewiesen (Q7-L6-007) — schließt die zuvor fehlende Einordnung von A00 in die Agententypologie. RBAC-Tabelle um Zeile „Aufsichtsagenten" ergänzt: eigener Ordner mit vollständigem Datei-/Werkzeugzugriff, lesend über Protokolle/Aktivitätsdaten aller anderen Agenten (Q7-L6-008). Q7-L6-005 (Platzhalter „Q7-M-XXX" in v1.5) explizit als offener Punkt benannt statt stillschweigend stehen gelassen — reale Mängel-ID weiterhin unbekannt.
+- v1.9 (21.09.2026): Querverweise korrigiert (Q7-L6-009): `Q7_Policy_Engine_v1.md` → `Q7_Policy_Engine_v1_3.md`; `Q7_Wissens_Artefaktmodell_v1.md` → `Q7_Wissens_Artefaktmodell_v1_2.md`.

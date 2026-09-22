@@ -1,6 +1,6 @@
 # Q7 – Organisationsmodell
 
-**Version:** 1.10
+**Version:** 1.11
 **Status:** Verbindlich
 
 ---
@@ -108,7 +108,7 @@ Geschäftsführung (00_Admin)
 └── A00 – Stab (direkte Admin-Unterstützung, außerhalb der A01-Koordination; zusätzlich systemweite Überwachungsfunktion als Aufsichtsagent, siehe L6 „Aufsichtsagenten" und „Systemweite Überwachungsfunktion (A00)")
 ```
 
-A14 (Sicherheit) steht als cross-funktionale Durchsetzungsebene außerhalb dieser Hierarchie (SEC-GATE, siehe Master Grundprinzip 6 und Entscheidungsregel 9 — inhaltliche SEC-GATE-Definition siehe `SEC-GATE_Definition_v1.0.md`).
+A14 (Sicherheit) steht als cross-funktionale Durchsetzungsebene außerhalb dieser Hierarchie (SEC-GATE, siehe Master Grundprinzip 6 und Entscheidungsregel 9 — inhaltliche SEC-GATE-Definition siehe `SEC-GATE_Definition_v1_1.md`).
 
 Kein Auftrag erreicht eine Fachabteilung ohne vorherige Koordination durch A01.
 Ablaufdetails → L5 Prozessmodell.
@@ -163,8 +163,8 @@ Lizenznehmer aktivieren Abteilungen entsprechend ihrer Edition und ihres Bedarfs
 (siehe Q7-M-065 Licensing Service, Q7-M-066 Feature Flags/Entitlement, Q7-M-071 Editionen).
 Nicht gebuchte Abteilungen sind inaktiv, aber strukturell vordefiniert und jederzeit aktivierbar.
 
-Vertiefung (Lizenznehmerstruktur, Isolationsgrade, Datenräume): `04_Doku/Infrastruktur/Q7_Tenant_Modell_v1.md`
-Vertiefung (Licensing Service, Feature-Flag-System, Editionen, IP-Schichten): `04_Doku/Infrastruktur/Q7_Lizenz_und_Deployment_v1.md`
+Vertiefung (Lizenznehmerstruktur, Isolationsgrade, Datenräume): `04_Doku/Infrastruktur/Q7_Tenant_Modell_v1_2.md`
+Vertiefung (Licensing Service, Feature-Flag-System, Editionen, IP-Schichten): `04_Doku/Infrastruktur/Q7_Lizenz_und_Deployment_v1_2.md`
 
 ---
 
@@ -264,3 +264,4 @@ Finale Freigabe liegt beim Admin (siehe L1 Grundprinzip 9, L2 Grundsatz 8).
 - v1.8 (26.07.2026): Referenz auf L6-Abschnitt "Ausfallsicherheit (Failover)" korrigiert auf "Technische Resilienz (statt Agenten-Failover)" (Q7-L6-004: Backup-Agenten-Konzept in L6 durch technische Resilienz in `rufeKIAn()` ersetzt).
 - v1.9 (15.09.2026): FS-07 - Kaputter Verweis 'siehe L6, SEC-GATE' korrigiert auf tatsaechliche Fundstellen in Master (Grundprinzip 6, Entscheidungsregel 9). Festgestellt: SEC-GATE wird in L1/L2/L6/Master an keiner Stelle inhaltlich definiert, nur erwaehnt - separater Backlog-Punkt angelegt.
 - v1.10 (19.09.2026): Terminologie "Kunde"/"Kundensicht"/"Kundenseitig" → "Lizenznehmer"/"Lizenznehmer-Sicht"/"Lizenznehmerseitig" durchgängig (Q7-L4-004). SEC-GATE-Verweis aktualisiert: inhaltliche Definition liegt nun in `SEC-GATE_Definition_v1.0.md` vor, Backlog-Punkt aus v1.9 damit erledigt (Q7-L4-005). Neuer Verweis auf L1 „Rollenmodell" in Abschnitt „Admin-Einheit" ergänzt (Q7-L4-006). Namenskonvention-Tabelle: Sichtbarkeit Ebene 2 von „L4–L6" auf „L4–L6, L8" erweitert, da L8 (Q7-M-078) denselben Bezeichner technisch referenziert (Q7-L4-007). Verweis „Master v1.2 Model-Visibility-Ausnahme" korrigiert auf „Master, Abschnitt „Abweichung von Grundprinzip 7 (KI bleibt unsichtbar)"" (Q7-L4-008). A00-Verweis um neuen Agententyp „Aufsichtsagent" ergänzt, konsistent mit L6 v1.8 (Q7-L4-009).
+- v1.11 (21.09.2026): Querverweise korrigiert (Q7-L4-010): `Q7_Tenant_Modell_v1.md` → `Q7_Tenant_Modell_v1_2.md`; `Q7_Lizenz_und_Deployment_v1.md` → `Q7_Lizenz_und_Deployment_v1_2.md`; `SEC-GATE_Definition_v1.0.md` (2×) → `SEC-GATE_Definition_v1_1.md` (v1.0 wurde im Rahmen der Dateihygiene vom 21.09.2026 gelöscht, v1.1 ist aktuell).
