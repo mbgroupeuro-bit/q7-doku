@@ -2,7 +2,7 @@
 
 > **Status:** Entwurf / Aktiv  
 > **Backend-Stack:** NestJS (TypeScript), LangGraph, PostgreSQL (pgvector)  
-> **Primärer Orchestrator:** Tamza Assistent (A01)  
+> **Primärer Orchestrator:**  Assistent (A01)  
 > **Lizenz-Basis:** Open-Source Frameworks (MIT / Apache 2.0)
 
 ---
@@ -12,7 +12,7 @@
 Das **Q7-Betriebssystem** ist ein modulares, entkoppeltes Multi-Agenten-System für Unternehmensworkflows. 
 
 * **Agenten-Identitäten (Gehirn):** Liegen als reine Markdown/YAML-Dateien vor (`/identity`, `/boundaries`, `/skills`, `/knowledge`).
-* **Agenten-Harness (Schaltwerk):** Wird im NestJS-Backend über **LangGraph** gesteuert.
+* **Agenten-Harness (Schaltwerk):** Wird im NestJS-Backend gesteuert.
 * **To-Spec & Quality Gate:** Kein Fachagent arbeitet ohne ein von A01 geprüftes und validiertes Auftragspaket (`SPEC.json`).
 
 ---
@@ -25,7 +25,7 @@ apps/q7-core-backend/
 │   ├── modules/
 │   │   ├── agent-loader/        # Liest YAML-Frontmatter & Markdown-Regeln
 │   │   ├── inbox-matcher/       # Vector Search (pgvector) für Pattern Matching
-│   │   ├── orchestrator/        # A01 (Tamza) Logik & Routing
+│   │   ├── orchestrator/        # A01  Logik & Routing
 │   │   └── langgraph-harness/   # LangGraph State-Machine & Nodes
 │   ├── schemas/                 # JSON-Schemas für SPEC.json & DTOs
 │   └── main.ts
